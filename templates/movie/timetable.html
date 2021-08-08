@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>영화제목 : {{ datas.movie_name }}</h3>
+    <h3>영화관검색 위치 : {{ datas.movie_place }}</h3>
+    <h4>현재시간 : {{ datas.now }}</h4>
+
+    <h1>롯데시네마 정보</h1>
+    {% for data in datas.lotte_theater_info%}
+        영화관 이름 : {{ data.TheaterName }}
+        <br/>
+        영화관 코드 : {{ data.TheaterID }}
+        <br/>
+        영화관 위치(lng) : {{ data.Longitude }}
+        <br/>
+        영화관 위치(lat) : {{ data.Latitude }}
+        <br/>
+        영화 상영시간 :
+        <br>
+
+        {% for MoiveList in data.MoiveLists %}
+{#            {{ MoiveList }}#}
+{#            {{ MoiveList.StartTime }}#}
+            {% if MoiveList.StartTime == "None"%}
+                    - 시작시간 : {{ MoiveList.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ MoiveList.RemainingSeat }}
+                    <br/>
+            {% else %}
+                {% for movie in MoiveList %}
+                    - 시작시간 : {{ movie.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ movie.RemainingSeat }}
+                    <br/>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <hr>
+    {% endfor %}
+        <br/>
+        <hr>
+
+
+    <p></p>
+    <hr>
+
+    <h1>CGV 정보</h1>
+    {% for data in datas.cgv_theater_info%}
+        영화관 이름 : {{ data.TheaterName }}
+        <br/>
+        영화관 코드 : {{ data.TheaterID }}
+        <br/>
+        영화관 위치(lng) : {{ data.Longitude }}
+        <br/>
+        영화관 위치(lat) : {{ data.Latitude }}
+        <br/>
+        영화 상영시간 :
+        <br>
+
+        {% for MoiveList in data.MoiveLists %}
+{#            {{ MoiveList }}#}
+{#            {{ MoiveList.StartTime }}#}
+            {% if MoiveList.StartTime == "None"%}
+                    - 시작시간 : {{ MoiveList.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ MoiveList.RemainingSeat }}
+                    <br/>
+            {% else %}
+                {% for movie in MoiveList %}
+                    - 시작시간 : {{ movie.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ movie.RemainingSeat }}
+                    <br/>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <hr>
+        <br/>
+
+        <hr>
+    {% endfor %}
+    <br/>
+{% endblock content %}
+
+

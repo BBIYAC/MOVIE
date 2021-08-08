@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for data in datas %}
+        <h3>영화관 : {{ data.TheaterName }}</h3>
+        <h3>영화관코드 : {{ data.TheaterID }}</h3>
+        <h3>영화관위치(lng) : {{ data.Longitude }}</h3>
+        <h3>영화관위치(lat) : {{ data.Latitude }}</h3>
+        <br>
+    {% endfor %}
+
+    <br/>
+{% endblock content %}
+
+

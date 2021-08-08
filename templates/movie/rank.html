@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>영화검색</h1>
+
+        <form action="{% url 'timetable' %}" method="post">
+             영화선택
+            <select name="selected_movie">
+                {% for key, value in datas.items %}
+                    <option value="{{ value.name }}">{{ value.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            지역선택
+            <input id="moviePlace" name="moviePlace" value=''>
+            <br>
+            날짜선택
+            <input type="date" id="start" name="date"
+               value="2021-08-08"
+               min="2021-01-01" max="2021-12-31">
+            <input type="submit" value="OK">
+        </form>
+
+    {% for key, value in datas.items %}
+        <hr>
+        <h5>순위 : {{ value.rank }}</h5>
+        <h5>영화제목 : {{ value.name }}</h5>
+        <h5>영화코드 : {{ value.code }}</h5>
+    {% endfor %}
+
+    <br/>
+{% endblock content %}
+
+
