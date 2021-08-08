@@ -1,5 +1,6 @@
 import os
 import json
+import math
 from pathlib import Path
 from datetime import datetime
 from django.shortcuts import render
@@ -73,6 +74,40 @@ def nearTheater(request):
     return render(request, 'movie/nearTheater.html', {'datas': theater_lists})
 
 
+
+
+def filter_nearest_theater(theater_list, pos_latitude, pos_longitude, n=3):
+        '''
+        To filter by location to get nearest theater count 3
+        :param theater_list:
+        :param pos_latitude:
+        :param pos_longitude:
+        :param n:
+        :return:
+        '''
+        def distance(x1, x2, y1, y2):
+            '''
+            TO get distance (x1, x2) ~ (y1, y2)
+            :param x1:
+            :param x2:
+            :param y1:
+            :param y2:
+            :return:
+            '''
+            dx = float(x1) - float(x2)
+            dy = float(y1) - float(y2)
+            distance = math.sqrt(dx**2 + dy**2)
+            return distance
+
+        distance_to_theater = []
+        for theater in theater_list:
+            get_distance = distance(pos_latitude, theater.get('Latitude'), pos_longitude, theater.get('Longitude'))
+            distance_to_theater.append((get_distance, theater))
+
+        return [theater for distance, theater in sorted(distance_to_theater, key=lambda x: x[0])[:n]]
+
+
+
 @csrf_exempt
 def timetable(request):
     now = datetime.now()
@@ -91,8 +126,9 @@ def timetable(request):
         lat = myloc['lat']
         lng = myloc['lng']
 
+    theater_list = []
+
     # LOTTE
-    lotte_theater_info = []
     Lcinema = LotteCinema()
     lotte_theater_lists = Lcinema.filter_nearest_theater(Lcinema.get_theater_list(), lat, lng)
 
@@ -119,7 +155,10 @@ def timetable(request):
         # print(lotte_movie_schedules)
         # print(type(lotte_movie_schedules))
 
-        lotte_theater_info.append({
+
+
+
+        theater_list.append({
             'TheaterID': theaterID,
             'TheaterName': theaterName,
             'Longitude': theaterLng,
@@ -130,7 +169,6 @@ def timetable(request):
     # print(lotte_theater_info)
 
     # CGV
-    cgv_theater_info = []
     Ccinema = CGV()
     cgv_theater_lists = Ccinema.filter_nearest_theater(Ccinema.get_theater_list(), lat, lng)
 
@@ -173,7 +211,7 @@ def timetable(request):
         # print(f"cgv_movie_schedules: {cgv_movie_schedules}")
         # print(f"cgv_movie_schedules: {type(cgv_movie_schedules)}")
 
-        cgv_theater_info.append({
+        theater_list.append({
             'TheaterID': theaterID,
             'TheaterName': theaterName,
             'Longitude': theaterLng,
@@ -186,12 +224,19 @@ def timetable(request):
     # print("---")
     # print(cgv_theater_info)
 
+    
+    theater_info = []
+    theater_lists = filter_nearest_theater(theater_list, lat, lng, 3)
+
+    for theater in theater_lists:
+        theater_info.append(theater)
+        print(theater['TheaterName'])
+
     datas = {
         'now': now,
         'movie_name': movie_name,
         'movie_place': movie_place,
-        'lotte_theater_info': lotte_theater_info,
-        'cgv_theater_info': cgv_theater_info
+        'theater_info': theater_info,
     }
 
     return render(request, 'movie/timetable.html', {'datas': datas})
