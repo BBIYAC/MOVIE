@@ -1,4 +1,4 @@
-# DJANGO MOVIE API BACKEND
+# DJANGO MOVIE
 
 - This is for make movie ticketing site
 - There is 3 movie company datas
@@ -10,7 +10,7 @@ $ git fetch && git checkout develop
 ```
 - Use Windows
 ```
-$ sh run_winodws.sh
+$ sh run_winodw.sh
 ```
 - Use Mac
 ```
@@ -18,12 +18,10 @@ $ sh run_mac.sh
 ```
 
 ### Page
-- Inddex
+- Index
     - http://127.0.0.1:8000/movie/index/
 - Rank
     - http://127.0.0.1:8000/movie/rank/
-- findeTheater
-    - http://127.0.0.1:8000/movie/find-theater/
     
 ### PROJECT STRUCTURE
 ```
