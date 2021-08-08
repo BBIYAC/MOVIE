@@ -24,6 +24,7 @@
 
     {% for key, value in datas.items %}
         <hr>
+        <img class="moviePoster" height="200px" src="{{ value.img }}"></img>
         <h5>순위 : {{ value.rank }}</h5>
         <h5>영화제목 : {{ value.name }}</h5>
         <h5>영화코드 : {{ value.code }}</h5>

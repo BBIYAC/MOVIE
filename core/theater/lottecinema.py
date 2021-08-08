@@ -73,9 +73,14 @@ class LotteCinema(object):
         :return:
         '''
         distance_to_theater = []
+        theaterNames = []
         for theater in theater_list:
             distance = self.distance(pos_latitude, theater.get('Latitude'), pos_longitude, theater.get('Longitude'))
-            distance_to_theater.append((distance, theater))
+            if theater.get('TheaterName') in theaterNames:
+                continue
+            else:
+                theaterNames.append(theater.get('TheaterName'))
+                distance_to_theater.append((distance, theater))
 
         return [theater for distance, theater in sorted(distance_to_theater, key=lambda x: x[0])[:n]]
 

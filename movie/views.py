@@ -11,6 +11,8 @@ from core.boxoffice import BoxOffice
 from core.location import Location
 from core.theater.lottecinema import LotteCinema
 from core.theater.cgv import CGV
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,9 +56,15 @@ def rank(request):
     movies = box.get_movies()
     movie_lists = box.simplify(movies)
 
-    for movie_list in movie_lists:
+    html = urlopen('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%B0%95%EC%8A%A4+%EC%98%A4%ED%94%BC%EC%8A%A4+%EC%88%9C%EC%9C%84')
+    soup = BeautifulSoup(html,'html.parser')
+    movies = soup.find('ul', {'class':'_panel'})
+    movieImgs = movies.find_all('li')
+
+    for i, movie_list in enumerate(movie_lists):
         rank = movie_list['rank']
         response_data[rank] = movie_list
+        response_data[rank]['img'] = movieImgs[i].find('img')['src']
 
     return render(request, 'movie/rank.html', {'datas': response_data})
 
@@ -230,7 +238,6 @@ def timetable(request):
 
     for theater in theater_lists:
         theater_info.append(theater)
-        print(theater['TheaterName'])
 
     datas = {
         'now': now,

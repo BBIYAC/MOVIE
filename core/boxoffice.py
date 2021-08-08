@@ -4,6 +4,8 @@ from urllib.request import urlopen
 from urllib.parse import urlencode
 from datetime import datetime
 from datetime import timedelta
+from bs4 import BeautifulSoup
+from urllib.parse import quote_plus
 
 
 class BoxOffice(object):
@@ -38,11 +40,16 @@ class BoxOffice(object):
         {'rank': '9', 'name': '이스케이프 룸 2: 노 웨이 아웃', 'code': '20218348'},
         {'rank': '10', 'name': '크루엘라', 'code': '20216362'}]
         '''
+
+            
+        
+
+
         return [
            {
               'rank': entry.get('rank'),
               'name': entry.get('movieNm'),
-              'code': entry.get('movieCd')
+              'code': entry.get('movieCd'),
            }
            for entry in result.get('boxOfficeResult').get('dailyBoxOfficeList')
         ]
