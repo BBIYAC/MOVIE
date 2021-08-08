@@ -13,6 +13,9 @@ from core.location import Location
 from core.theater.lottecinema import LotteCinema
 from core.theater.cgv import CGV
 from drf_yasg import openapi
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -106,9 +109,15 @@ def movieRank(request):
         movie_lists = box.simplify(movies)
         response_data['response'] = '200'
 
-        for movie_list in movie_lists:
+        html = urlopen('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%B0%95%EC%8A%A4+%EC%98%A4%ED%94%BC%EC%8A%A4+%EC%88%9C%EC%9C%84')
+        soup = BeautifulSoup(html,'html.parser')
+        movies = soup.find('ul', {'class':'_panel'})
+        movieImgs = movies.find_all('li')
+
+        for i, movie_list in enumerate(movie_lists):
             rank = movie_list['rank']
             response_data[rank] = movie_list
+            response_data[rank]['img'] = movieImgs[i].find('img')['src']
     else:
         response_data['errorr_msg'] = 'you should request POST'
         response_data['response'] = '400'

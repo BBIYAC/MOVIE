@@ -40,13 +40,15 @@ def get_time_table(movies):
 
 
 url = "https://www.megabox.co.kr/on/oh/ohc/Brch/schedulePage.do"
-parameters = {"masterType":"brch",
-              "detailType":"area",
-              "brchNo":"1372",
-              "firstAt":"N",
-              "brchNo1":"1372",
-              "crtDe":"20200315",
-              "playDe":"20200315"}
+parameters = {
+    "masterType":"movie",
+    "movieNo":"21049700",
+    "firstAt":"N",
+    "playDe":"20210809",
+    "movieNo1":"21049700",
+    "areaCd":"45",     
+    "crtDe":"20210808",
+}
 response = requests.post(url, data = parameters).json()
 
 movie_response = response['megaMap']['movieFormList']
