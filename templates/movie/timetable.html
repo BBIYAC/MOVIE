@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <header>
+        <style>
+            .back {float:left; width: 90px; height: 90px;}
+            .wrap {text-align: center; padding: 10px 65px; font-size: 55px; font-family:나눔스퀘어_ac;}
+            .line1 {width: 800px; height: 4px; text-align: center; background-color: rgb(255, 255, 255);}
+            .day {font-size: 37px; text-align: center; margin: 10px 40px 30px;}
+            .data {font-family: 나눔스퀘어_ac; }
+        </style>
+    </header>
+
+    <body>
+        <img class="back" src="image/leftarrow.png">
+        <br><br>
+
+        <div class="wrap">
+            <p>모가디슈</p>
+            <img src="image/poster.jpg" width="600px" height="750px">
+            <hr class="line1">
+
+            <!--요일날짜-->
+            <table  style="width:60%; margin:auto; text-align: center">
+                <td> <p class="day">월<br>9</p> </td>  
+                <td> <p class="day">화<br>10</p> </td>
+                <td> <p class="day">수<br>11</p> </td>
+                <td> <p class="day">목<br>12</p> </td>
+                <td> <p class="day">금<br>13</p> </td>  
+                <td> <p class="day">토<br>14</p> </td> 
+            </table>
+
+            <table class="data">
+                <!--첫번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/megabox.jpg" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">07:50[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 7관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">110/173</td>
+                </tr>
+                <!--두번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/lotte.png" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">08:10[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 6관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">85/128</td>
+                </tr>
+                <!--세번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/lotte.png" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">08:45[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 2관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">154/236</td>
+                </tr>
+                <!--네번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/megabox.jpg" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">08:50[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 6관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">109/160</td>
+                </tr>
+                <!--다섯번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/lotte.png" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">09:20[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 4관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">140/210</td>
+                </tr>
+                <!--여섯번째 상영시간-->
+                <tr>
+                    <td rowspan="2">
+                        <img src="image/megabox.jpg" width="80px" height="80px" style="margin: 20px 30px">
+                    </td>
+                    <td rowspan="2" width="410px" style="font-size: 50px;">09:40[조조]</td>
+                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 MX관</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 30px; text-align: right;">144/261</td>
+                </tr>
+            </table>
+        </div>
+        
+    </body>
+    <!-- <h3>영화제목 : {{ datas.movie_name }}</h3>
+    <h3>영화관검색 위치 : {{ datas.movie_place }}</h3>
+    <h4>현재시간 : {{ datas.now }}</h4>
+
+    {% for data in datas.theater_info%}
+        영화관 이름 : {{ data.TheaterName }}
+        <br/>
+        영화관 코드 : {{ data.TheaterID }}
+        <br/>
+        영화관 위치(lng) : {{ data.Longitude }}
+        <br/>
+        영화관 위치(lat) : {{ data.Latitude }}
+        <br/>
+        영화 상영시간 :
+        <br>
+
+        {% for MoiveList in data.MoiveLists %}
+{#            {{ MoiveList }}#}
+{#            {{ MoiveList.StartTime }}#}
+            {% if MoiveList.StartTime == "None"%}
+                    - 시작시간 : {{ MoiveList.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ MoiveList.RemainingSeat }}
+                    <br/>
+            {% else %}
+                {% for movie in MoiveList %}
+                    - 시작시간 : {{ movie.StartTime }}
+                    <br/>
+                    - 잔여좌석 : {{ movie.RemainingSeat }}
+                    <br/>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <hr>
+    {% endfor %}
+    <br/> -->
+{% endblock content %}
+
+
