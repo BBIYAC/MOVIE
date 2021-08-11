@@ -35,11 +35,35 @@ class Location(object):
         address = str(place)
         key = str(self.get_location_api())
         url = 'https://maps.googleapis.com/maps/api/geocode/json?address={}&key={}'.format(address, key)
-        headers = {'content-type': 'application/json'}
+        headers = {'content-type': 'application/json', 'Accept-Language' : 'ko'}
         response = requests.post(url, headers=headers)
         response = response.text
         response = json.loads(response)
         results = response.get('results')
         geometry = results[0]['geometry']
         location = geometry.get('location')
-        return location
+        address = results[0].get('formatted_address')
+        datas = {
+            'location' : location,
+            'address' : address,
+        }
+        return datas
+
+    def get_address(self, latitude, longitude):
+        lat = str(latitude)
+        lng = str(longitude)
+        key = str(self.get_location_api())
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng={},{}&key={}'.format(lat, lng, key)
+        headers = {'content-type': 'application/json', 'Accept-Language' : 'ko'}
+        response = requests.post(url, headers=headers)
+        response = response.text
+        response = json.loads(response)
+        results = response.get('results')
+        geometry = results[0]['geometry']
+        location = geometry.get('location')
+        address = results[0].get('formatted_address')
+        datas = {
+            'location' : location,
+            'address' : address,
+        }
+        return datas

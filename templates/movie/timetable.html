@@ -18,18 +18,17 @@
         <br><br>
 
         <div class="wrap">
-            <p>모가디슈</p>
-            <img src="{% static 'img/poster.jpg' %}" width="600px" height="750px">
+            <p>{{ datas.movie_name }}</p>
+            {% autoescape on %}
+            <img src="{{ datas.img_url }}" width="600px" height="750px">
+            {% endautoescape %}
             <hr class="line1">
 
             <!--요일날짜-->
             <table  style="width:60%; margin:auto; text-align: center">
-                <td> <p class="day">월<br>9</p> </td>  
-                <td> <p class="day">화<br>10</p> </td>
-                <td> <p class="day">수<br>11</p> </td>
-                <td> <p class="day">목<br>12</p> </td>
-                <td> <p class="day">금<br>13</p> </td>  
-                <td> <p class="day">토<br>14</p> </td> 
+                {% for date in datas.date %}
+                    <td> <p class="day">{{ date.text }}<br>{{ date.day }}</p> </td>  
+                {% endfor %}
             </table>
 
             <table class="data">

@@ -42,6 +42,7 @@ def get_location_api(setting, secrets=secrets):
         raise ImproperlyConfigured(error_msg)
 
 
+
 BOXOFFICE_API_KEY = get_boxOffice_api("BOXOFFICE_API_KEY")
 LOCATION_API_KEY = get_location_api("LOCATION_API_KEY")
 

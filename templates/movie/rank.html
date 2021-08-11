@@ -4,33 +4,74 @@
 {% block content %}
     <head>
         <style type="text/css">
-            .b1 {
-                text-align: center;
-                height: 180px; width: 100%;
+            body{
+                margin: 0;
+            }
+            .header {
+                height: 180px; 
+                width: 100%;
                 background-color: rgb(107, 40, 107);
             }
-            .adbtn{
-                border-color: transparent transparent transparent transparent;
-                background: transparent;
+            a,
+            a:link, 
+            a:visited{
+                text-decoration: none;
+            }
+            .location{
+                display: flex;
                 color: white;
-                font-size: 37px;
-                margin-top: 60px;
+                text-align: center;
+                vertical-align: baseline;
+                font-size: 48px;
+                cursor: pointer;
+            }
+            .location-icon{
+                margin-left: 40px;
+                line-height: 64px;
             }
             .wrap {
                 margin: 100px 60px;
             }
             .hr {
-                width: 290px; text-align: left; margin-left: 14px; margin-bottom: 50px;
+                width: 40%; 
+                text-align: left; 
+                margin-left: 20px; 
+                margin-bottom: 50px;
             }
-            .tap {
-                margin: 25px 40px;
+            .moviePoster {
+                margin: 25px 20px;
+                border-radius: 20px;
+            }
+            .top{
+                -ms-overflow-style: none;
+                width: 100%; 
+                height: 1400px; 
+                overflow: auto; 
+            }
+            .top::-webkit-scrollbar{
+                display:none; 
+            }
+            .tbl-top{
+                margin: auto;
+            }
+            .tbl-top > tr{
+                text-align: center;
+            } 
+            .tbl-top > tr > td{
+                display: inline-block;
+            }
+            .tbl-top h1{
+                margin: 40px 0px 0px 30px;
             }
         </style>
     </head>
 
     <body>
-        <div class="b1">
-            <button class="adbtn">대전 유성구 구즉로16</button>
+        <div class="header">
+            <a class="location" href="{% url 'location' %}">
+                <span>{{ datas.address }}</span>
+                <i class="fas fa-chevron-down location-icon"></i>
+            </a>
         </div>
 
        <div class="wrap">
@@ -38,55 +79,35 @@
            <p style="font-size:60px; font-family: 나눔스퀘어_ac; margin: 10px 0px 24px 20px;">현재 상영작</p>
            <hr class="hr">
             
-           <div style="overflow:auto">
-            <table>
-                <!--TOP 1-->
-                <td>
-                    <img class="tap" src="{% static 'img/top1.png' %}" width="300" height="450">
-                </td>
-                <!--TOP 2-->
-                <td>
-                    <img class="tap" src="{% static 'img/top2.png' %}" width="300" height="450">
-                </td>
-                <!--TOP 3-->
-                <td>
-                 <img class="tap" src="{% static 'img/top3.png' %}" width="300" height="450">
-                </td>
+           <div class="top">
+            <table class="tbl-top">
+                {% for  key, value in datas.movie.items %}
+                    {% if forloop.counter|divisibleby:"2" %}
+                        <td>
+                            <h1>{{ value.rank }}순위</h1>
+                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&img_url={{value.img}}" >
+                                <img class="moviePoster" src="{{ value.img }}" width="362" />
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    {% else %}
+                    
+                    <tr>
+                        <td>
+                            <h1>{{ value.rank }}순위</h1>
+                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&img_url={{value.img}}" >
+                                <img class="moviePoster" src="{{ value.img }}" width="362" />
+                            </a>
+                        </td>
+                    {% endif %}
+                {% endfor %}
             </table>
            </div>
        </div>
 
     </body>
 
-    <!--<h1>영화검색</h1>
-
-        <form action="{% url 'timetable' %}" method="post">
-             영화선택
-            <select name="selected_movie">
-                {% for key, value in datas.items %}
-                    <option value="{{ value.name }}">{{ value.name }}</option>
-                {% endfor %}
-            </select>
-            <br>
-            지역선택
-            <input id="moviePlace" name="moviePlace" value=''>
-            <br>
-            날짜선택
-            <input type="date" id="start" name="date"
-               value="2021-08-08"
-               min="2021-01-01" max="2021-12-31">
-            <input type="submit" value="OK">
-        </form>
-
-    {% for key, value in datas.items %}
-        <hr>
-        <img class="moviePoster" height="200px" src="{{ value.img }}"></img>
-        <h5>순위 : {{ value.rank }}</h5>
-        <h5>영화제목 : {{ value.name }}</h5>
-        <h5>영화코드 : {{ value.code }}</h5>
-    {% endfor %}
-
-    <br/>-->
 {% endblock content %}
 
 

@@ -3,6 +3,7 @@ import json
 import math
 from pathlib import Path
 from datetime import datetime
+from datetime import timedelta
 from django.shortcuts import render
 from django.core.exceptions import ImproperlyConfigured
 from django.views.decorators.csrf import csrf_exempt
@@ -12,7 +13,9 @@ from core.location import Location
 from core.theater.lottecinema import LotteCinema
 from core.theater.cgv import CGV
 from urllib.request import urlopen
+from urllib.request import quote
 from bs4 import BeautifulSoup
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +41,9 @@ def get_location_api(setting, secrets=secrets):
         raise ImproperlyConfigured(error_msg)
 
 
+
+
+
 BOXOFFICE_API_KEY = get_boxOffice_api("BOXOFFICE_API_KEY")
 LOCATION_API_KEY = get_location_api("LOCATION_API_KEY")
 
@@ -48,7 +54,8 @@ def index(request):
     return render(request, 'movie/index.html', {'data': data})
 
 def location(request):
-    return render(request, 'movie/position.html')
+    return render(request, 'movie/location.html')
+
 
 def selectseat(request):
     return render(request, 'movie/selectseat.html')
@@ -56,21 +63,41 @@ def selectseat(request):
 
 @csrf_exempt
 def rank(request):
-    response_data = {}
+    
+    movie = {}
+
 
     box = BoxOffice(BOXOFFICE_API_KEY)
     movies = box.get_movies()
     movie_lists = box.simplify(movies)
 
-    html = urlopen('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%B0%95%EC%8A%A4+%EC%98%A4%ED%94%BC%EC%8A%A4+%EC%88%9C%EC%9C%84')
-    soup = BeautifulSoup(html,'html.parser')
-    movies = soup.find('ul', {'class':'_panel'})
-    movieImgs = movies.find_all('li')
 
-    for i, movie_list in enumerate(movie_lists):
+
+    for movie_list in movie_lists:
         rank = movie_list['rank']
-        response_data[rank] = movie_list
-        response_data[rank]['img'] = movieImgs[i].find('img')['src']
+        movie[rank] = movie_list
+
+        base_url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='
+        movie_name = movie_list['name'] 
+        search_url = base_url + quote(movie_name)
+        html = urlopen(search_url)
+        soup = BeautifulSoup(html,'html.parser')
+        img_url = soup.select_one('#main_pack > div.sc_new.cs_common_module.case_empasis._au_movie_content_wrap > div.cm_content_wrap > div.cm_content_area._cm_content_area_info > div.cm_info_box > div.detail_info > a > img')['src']
+        movie[rank]['img'] = img_url
+
+    location = Location(LOCATION_API_KEY)
+
+    if request.POST.get('location'):
+        movie_place = request.POST.get('location')
+        myadd = location.get_place_location(movie_place)['address']
+        address = myadd
+        response_data = {'movie': movie, 'address': address}
+    else:
+        myloc = location.get_location()
+        lat = myloc['lat']
+        lng = myloc['lng']
+        address = location.get_address(lat, lng)['address']
+        response_data = {'movie': movie, 'address':address}
 
     return render(request, 'movie/rank.html', {'datas': response_data})
 
@@ -123,15 +150,30 @@ def filter_nearest_theater(theater_list, pos_latitude, pos_longitude, n=3):
 
 
 @csrf_exempt
+def movie_list(request):
+    movie_name = request.GET['movie_name']
+    img_url = request.GET['img_url']
+    
+    datas = {
+       "movie_name": movie_name,
+       "img_url": img_url
+    }
+
+    print(datas)
+
+    return render(request, 'movie/timetable.html', {'datas': datas})
+
+
+
+@csrf_exempt
 def timetable(request):
-    now = datetime.now()
-    now = now.strftime('%Y-%m-%d %H:%m')
+    
     location = Location(LOCATION_API_KEY)
     movie_name = request.POST.get('selected_movie')
     date = request.POST.get('date')
     if request.POST.get('moviePlace'):
         movie_place = request.POST.get('moviePlace')
-        findLoc = location.get_place_location(movie_place)
+        findLoc = location.get_place_location(movie_place)['location']
         lat = findLoc['lat']
         lng = findLoc['lng']
     else:
@@ -245,11 +287,27 @@ def timetable(request):
     for theater in theater_lists:
         theater_info.append(theater)
 
+    movie_name = request.GET['movie_name']
+    img_url = request.GET['img_url']
+
+    days = ['일', '월', '화', '수', '목', '금', '토']
+    weekday = []
+
+    for i in range(0, 7):
+        date = {}
+        now = datetime.now() + timedelta(days=i)
+        d = now.strftime("%w")
+        date['text'] = days[int(d)]
+        date['day'] = now.day
+        weekday.append(date)
+
+
     datas = {
-        'now': now,
+        'date': weekday,
         'movie_name': movie_name,
         'movie_place': movie_place,
         'theater_info': theater_info,
+        'img_url': img_url
     }
 
     return render(request, 'movie/timetable.html', {'datas': datas})
