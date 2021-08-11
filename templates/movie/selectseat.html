@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <head>
+        <style>
+           .back {float:left; width: 90px; height: 90px;}
+           .texth {font-size: 55px; font-family:나눔스퀘어_ac; text-align:center;}
+           .seatwrap {text-align: center;}
+        </style>
+    </head>
+    <body>
+        <br></br>
+        <img class="back" src="{% static 'img/leftarrow.png' %}"><br><br>
+        
+        <div class="seatwrap">
+            <p class="texth">좌석선택</p>
+            <img src="{% static 'img/seat.PNG' %}" height="500">
+        </div> 
+    </body>
+
+{% endblock content %}

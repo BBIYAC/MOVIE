@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <head>
+        <style>
+            .back {float:left; width: 90px; height: 90px;}
+            .wrap { 
+                padding: 270px 70px 30px 50px;  
+                font-family: 나눔스퀘어_ac;
+                font-weight: bold;
+                color: #535353d2;
+                }
+            .text-filed {
+                width: 640px;  
+                padding: 30px; 
+                font-size: 35px; 
+                background-color: #F3F3F3;
+                font-family: 나눔스퀘어_ac;
+                }
+            .search {
+                height: 40px; 
+                padding: 30px; 
+                margin-left: 30px; 
+                border:1px solid black; 
+                }
+            .currentpo {
+                width:720px; height:45px; 
+                padding: 30px; 
+                margin-top:30px; 
+                border:1px solid black;
+                font-size: 35px; 
+                text-align: center; 
+                font-weight: bold;
+                
+                }
+        </style>
+    </head>
+
+    <body>
+        <br>
+        <img class="back" src="{% static 'img/leftarrow.png' %}">
+        <div class="wrap">
+            <form>
+                <p style="font-size: 68px; margin-bottom: 0px;">어디에서 영화를 관람하나요?</p>
+                <p style="font-size: 47px; margin: 29px 0px 90px">지역, 도로명, 건물을 입력하세요</p>
+                <table>
+                        <td>
+                            <input type="text" name="pos" class="text-filed" placeholder="예) 서울 강남구 대치1동">
+                        </td>
+                        <td>
+                            <img class="search" src="{% static 'img/search.png' %}">
+                        </td>
+                </table>
+                <div class="currentpo">
+                    <img src="{% static 'img/gps.png' %}" width="40px" height="40px" style="margin-right: 20px;">
+                    현 위치로 주소 설정
+                </div>
+            </form>
+            
+
+            </div>
+        </div>
+    </body>
+
+{% endblock content %}

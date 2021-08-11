@@ -1,8 +1,64 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+    <head>
+        <style type="text/css">
+            .b1 {
+                text-align: center;
+                height: 180px; width: 100%;
+                background-color: rgb(107, 40, 107);
+            }
+            .adbtn{
+                border-color: transparent transparent transparent transparent;
+                background: transparent;
+                color: white;
+                font-size: 37px;
+                margin-top: 60px;
+            }
+            .wrap {
+                margin: 100px 60px;
+            }
+            .hr {
+                width: 290px; text-align: left; margin-left: 14px; margin-bottom: 50px;
+            }
+            .tap {
+                margin: 25px 40px;
+            }
+        </style>
+    </head>
 
-    <h1>영화검색</h1>
+    <body>
+        <div class="b1">
+            <button class="adbtn">대전 유성구 구즉로16</button>
+        </div>
+
+       <div class="wrap">
+           <p style="font-size:118px; font-family: Impact; margin: 0px 0px 0px 20px">TOP 10</p>
+           <p style="font-size:60px; font-family: 나눔스퀘어_ac; margin: 10px 0px 24px 20px;">현재 상영작</p>
+           <hr class="hr">
+            
+           <div style="overflow:auto">
+            <table>
+                <!--TOP 1-->
+                <td>
+                    <img class="tap" src="{% static 'img/top1.png' %}" width="300" height="450">
+                </td>
+                <!--TOP 2-->
+                <td>
+                    <img class="tap" src="{% static 'img/top2.png' %}" width="300" height="450">
+                </td>
+                <!--TOP 3-->
+                <td>
+                 <img class="tap" src="{% static 'img/top3.png' %}" width="300" height="450">
+                </td>
+            </table>
+           </div>
+       </div>
+
+    </body>
+
+    <!--<h1>영화검색</h1>
 
         <form action="{% url 'timetable' %}" method="post">
              영화선택
@@ -30,7 +86,7 @@
         <h5>영화코드 : {{ value.code }}</h5>
     {% endfor %}
 
-    <br/>
+    <br/>-->
 {% endblock content %}
 
 

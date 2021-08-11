@@ -47,6 +47,12 @@ def index(request):
     data = 'index page'
     return render(request, 'movie/index.html', {'data': data})
 
+def location(request):
+    return render(request, 'movie/position.html')
+
+def selectseat(request):
+    return render(request, 'movie/selectseat.html')
+
 
 @csrf_exempt
 def rank(request):
