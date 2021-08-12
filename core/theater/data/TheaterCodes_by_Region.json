@@ -1,0 +1,1168 @@
+{
+    "01": [
+        {
+            "TheaterCode": "0056",
+            "TheaterName": "CGV\uac15\ub0a8",
+            "Longitude": 127.026319,
+            "Latitude": 37.5015587
+        },
+        {
+            "TheaterCode": "0001",
+            "TheaterName": "CGV\uac15\ubcc0",
+            "Longitude": 127.0957088,
+            "Latitude": 37.5349372
+        },
+        {
+            "TheaterCode": "0229",
+            "TheaterName": "CGV\uac74\ub300\uc785\uad6c",
+            "Longitude": 127.066931,
+            "Latitude": 37.5397613
+        },
+        {
+            "TheaterCode": "0010",
+            "TheaterName": "CGV\uad6c\ub85c",
+            "Longitude": 126.8825372,
+            "Latitude": 37.5013174
+        },
+        {
+            "TheaterCode": "0063",
+            "TheaterName": "CGV\ub300\ud559\ub85c",
+            "Longitude": 126.999828,
+            "Latitude": 37.583422
+        },
+        {
+            "TheaterCode": "0252",
+            "TheaterName": "CGV\ub3d9\ub300\ubb38",
+            "Longitude": 127.0078661,
+            "Latitude": 37.5689617
+        },
+        {
+            "TheaterCode": "0230",
+            "TheaterName": "CGV\ub4f1\ucd0c",
+            "Longitude": 126.85602,
+            "Latitude": 37.5578035
+        },
+        {
+            "TheaterCode": "0009",
+            "TheaterName": "CGV\uba85\ub3d9",
+            "Longitude": 126.9828889,
+            "Latitude": 37.5633883
+        },
+        {
+            "TheaterCode": "0105",
+            "TheaterName": "CGV\uba85\ub3d9\uc5ed \uc528\ub124\ub77c\uc774\ube0c\ub7ec\ub9ac",
+            "Longitude": 126.9853147,
+            "Latitude": 37.561253
+        },
+        {
+            "TheaterCode": "0011",
+            "TheaterName": "CGV\ubaa9\ub3d9",
+            "Longitude": 126.8750099,
+            "Latitude": 37.5262575
+        },
+        {
+            "TheaterCode": "0057",
+            "TheaterName": "CGV\ubbf8\uc544",
+            "Longitude": 127.0307389,
+            "Latitude": 37.6120557
+        },
+        {
+            "TheaterCode": "0030",
+            "TheaterName": "CGV\ubd88\uad11",
+            "Longitude": 126.9288713,
+            "Latitude": 37.6097385
+        },
+        {
+            "TheaterCode": "0046",
+            "TheaterName": "CGV\uc0c1\ubd09",
+            "Longitude": 127.0923835,
+            "Latitude": 37.5977689
+        },
+        {
+            "TheaterCode": "0300",
+            "TheaterName": "CGV\uc131\uc2e0\uc5ec\ub300\uc785\uad6c",
+            "Longitude": 127.0170483,
+            "Latitude": 37.5925601
+        },
+        {
+            "TheaterCode": "0088",
+            "TheaterName": "CGV\uc1a1\ud30c",
+            "Longitude": 127.1249983,
+            "Latitude": 37.4775778
+        },
+        {
+            "TheaterCode": "0276",
+            "TheaterName": "CGV\uc218\uc720",
+            "Longitude": 127.0300198,
+            "Latitude": 37.642338
+        },
+        {
+            "TheaterCode": "0150",
+            "TheaterName": "CGV\uc2e0\ucd0c\uc544\ud2b8\ub808\uc628",
+            "Longitude": 126.940327,
+            "Latitude": 37.5564819
+        },
+        {
+            "TheaterCode": "0040",
+            "TheaterName": "CGV\uc555\uad6c\uc815",
+            "Longitude": 127.0288659,
+            "Latitude": 37.5244988
+        },
+        {
+            "TheaterCode": "0112",
+            "TheaterName": "CGV\uc5ec\uc758\ub3c4",
+            "Longitude": 126.9254109,
+            "Latitude": 37.5254692
+        },
+        {
+            "TheaterCode": "0292",
+            "TheaterName": "CGV\uc5f0\ub0a8",
+            "Longitude": 126.9258096,
+            "Latitude": 37.5577291
+        },
+        {
+            "TheaterCode": "0059",
+            "TheaterName": "CGV\uc601\ub4f1\ud3ec",
+            "Longitude": 126.9031758,
+            "Latitude": 37.5171639
+        },
+        {
+            "TheaterCode": "0074",
+            "TheaterName": "CGV\uc655\uc2ed\ub9ac",
+            "Longitude": 127.0387414,
+            "Latitude": 37.560501
+        },
+        {
+            "TheaterCode": "0013",
+            "TheaterName": "CGV\uc6a9\uc0b0\uc544\uc774\ud30c\ud06c\ubab0",
+            "Longitude": 126.9651626,
+            "Latitude": 37.5300859
+        },
+        {
+            "TheaterCode": "0131",
+            "TheaterName": "CGV\uc911\uacc4",
+            "Longitude": 127.0685581,
+            "Latitude": 37.6399709
+        },
+        {
+            "TheaterCode": "0199",
+            "TheaterName": "CGV\ucc9c\ud638",
+            "Longitude": 127.1422439,
+            "Latitude": 37.5456582
+        },
+        {
+            "TheaterCode": "0107",
+            "TheaterName": "CGV\uccad\ub2f4\uc528\ub124\uc2dc\ud2f0",
+            "Longitude": 127.0370092,
+            "Latitude": 37.522837
+        },
+        {
+            "TheaterCode": "0223",
+            "TheaterName": "CGV\ud53c\uce74\ub514\ub9ac1958",
+            "Longitude": 126.9911934,
+            "Latitude": 37.5710462
+        },
+        {
+            "TheaterCode": "0164",
+            "TheaterName": "CGV\ud558\uacc4",
+            "Longitude": 127.0646102,
+            "Latitude": 37.6388901
+        },
+        {
+            "TheaterCode": "0191",
+            "TheaterName": "CGV\ud64d\ub300",
+            "Longitude": 126.9226104,
+            "Latitude": 37.5564405
+        },
+        {
+            "TheaterCode": "P001",
+            "TheaterName": "CINE de CHEF \uc555\uad6c\uc815",
+            "Longitude": 127.0289234,
+            "Latitude": 37.52448
+        },
+        {
+            "TheaterCode": "P013",
+            "TheaterName": "CINE de CHEF \uc6a9\uc0b0\uc544\uc774\ud30c\ud06c\ubab0",
+            "Longitude": 126.9652917,
+            "Latitude": 37.5300542
+        }
+    ],
+    "02": [
+        {
+            "TheaterCode": "0260",
+            "TheaterName": "CGV\uacbd\uae30\uad11\uc8fc",
+            "Longitude": 127.2586327,
+            "Latitude": 37.4076901
+        },
+        {
+            "TheaterCode": "0255",
+            "TheaterName": "CGV\uace0\uc591\ud589\uc2e0",
+            "Longitude": 126.8344894,
+            "Latitude": 37.6134891
+        },
+        {
+            "TheaterCode": "0257",
+            "TheaterName": "CGV\uad11\uad50",
+            "Longitude": 127.0574899,
+            "Latitude": 37.28532089999999
+        },
+        {
+            "TheaterCode": "0266",
+            "TheaterName": "CGV\uad11\uad50\uc0c1\ud604",
+            "Longitude": 127.0680102,
+            "Latitude": 37.2967987
+        },
+        {
+            "TheaterCode": "0232",
+            "TheaterName": "CGV\uad6c\ub9ac",
+            "Longitude": 127.1420457,
+            "Latitude": 37.6017216
+        },
+        {
+            "TheaterCode": "0278",
+            "TheaterName": "CGV\uae40\ud3ec",
+            "Longitude": 126.7071877,
+            "Latitude": 37.63220829999999
+        },
+        {
+            "TheaterCode": "0188",
+            "TheaterName": "CGV\uae40\ud3ec\uc6b4\uc591",
+            "Longitude": 126.6840256,
+            "Latitude": 37.6546305
+        },
+        {
+            "TheaterCode": "0126",
+            "TheaterName": "CGV\uae40\ud3ec\ud48d\ubb34",
+            "Longitude": 126.7236531,
+            "Latitude": 37.6099507
+        },
+        {
+            "TheaterCode": "0298",
+            "TheaterName": "CGV\uae40\ud3ec\ud55c\uac15",
+            "Longitude": 126.7071877,
+            "Latitude": 37.63220829999999
+        },
+        {
+            "TheaterCode": "0124",
+            "TheaterName": "CGV\ub3d9\ubc31",
+            "Longitude": 127.1515441,
+            "Latitude": 37.2780731
+        },
+        {
+            "TheaterCode": "0041",
+            "TheaterName": "CGV\ub3d9\uc218\uc6d0",
+            "Longitude": 127.032113,
+            "Latitude": 37.2635523
+        },
+        {
+            "TheaterCode": "0106",
+            "TheaterName": "CGV\ub3d9\ud0c4",
+            "Longitude": 127.0693597,
+            "Latitude": 37.2051548
+        },
+        {
+            "TheaterCode": "0265",
+            "TheaterName": "CGV\ub3d9\ud0c4\uc5ed",
+            "Longitude": 127.0981834,
+            "Latitude": 37.2021996
+        },
+        {
+            "TheaterCode": "0233",
+            "TheaterName": "CGV\ub3d9\ud0c4\ud638\uc218\uacf5\uc6d0",
+            "Longitude": 127.1061095,
+            "Latitude": 37.1716971
+        },
+        {
+            "TheaterCode": "0226",
+            "TheaterName": "CGV\ubc30\uace7",
+            "Longitude": 126.7262526,
+            "Latitude": 37.3742078
+        },
+        {
+            "TheaterCode": "0155",
+            "TheaterName": "CGV\ubc94\uacc4",
+            "Longitude": 126.9511393,
+            "Latitude": 37.3892649
+        },
+        {
+            "TheaterCode": "0015",
+            "TheaterName": "CGV\ubd80\ucc9c",
+            "Longitude": 126.7610728,
+            "Latitude": 37.5043498
+        },
+        {
+            "TheaterCode": "0194",
+            "TheaterName": "CGV\ubd80\ucc9c\uc5ed",
+            "Longitude": 126.7810103,
+            "Latitude": 37.485823
+        },
+        {
+            "TheaterCode": "0287",
+            "TheaterName": "CGV\ubd80\ucc9c\uc625\uae38",
+            "Longitude": 126.8236446,
+            "Latitude": 37.4674285
+        },
+        {
+            "TheaterCode": "0049",
+            "TheaterName": "CGV\ubd81\uc218\uc6d0",
+            "Longitude": 127.0075041,
+            "Latitude": 37.3035629
+        },
+        {
+            "TheaterCode": "0242",
+            "TheaterName": "CGV\uc0b0\ubcf8",
+            "Longitude": 126.9332245,
+            "Latitude": 37.3589242
+        },
+        {
+            "TheaterCode": "0196",
+            "TheaterName": "CGV\uc11c\ud604",
+            "Longitude": 127.1224393,
+            "Latitude": 37.3873091
+        },
+        {
+            "TheaterCode": "0304",
+            "TheaterName": "CGV\uc131\ub0a8\ubaa8\ub780",
+            "Longitude": 127.1295975,
+            "Latitude": 37.4313041
+        },
+        {
+            "TheaterCode": "0143",
+            "TheaterName": "CGV\uc18c\ud48d",
+            "Longitude": 126.7567429,
+            "Latitude": 37.50392739999999
+        },
+        {
+            "TheaterCode": "0012",
+            "TheaterName": "CGV\uc218\uc6d0",
+            "Longitude": 127.000005,
+            "Latitude": 37.2665965
+        },
+        {
+            "TheaterCode": "0274",
+            "TheaterName": "CGV\uc2a4\ud0c0\ud544\ub4dc\uc2dc\ud2f0\uc704\ub840",
+            "Longitude": 127.1482398,
+            "Latitude": 37.4805784
+        },
+        {
+            "TheaterCode": "0073",
+            "TheaterName": "CGV\uc2dc\ud765",
+            "Longitude": 126.7916617,
+            "Latitude": 37.4469609
+        },
+        {
+            "TheaterCode": "0211",
+            "TheaterName": "CGV\uc548\uc0b0",
+            "Longitude": 126.8310032,
+            "Latitude": 37.3133972
+        },
+        {
+            "TheaterCode": "0279",
+            "TheaterName": "CGV\uc548\uc131",
+            "Longitude": 127.2571445,
+            "Latitude": 37.0122686
+        },
+        {
+            "TheaterCode": "0003",
+            "TheaterName": "CGV\uc57c\ud0d1",
+            "Longitude": 127.1265109,
+            "Latitude": 37.412982
+        },
+        {
+            "TheaterCode": "0262",
+            "TheaterName": "CGV\uc591\uc8fc\uc625\uc815",
+            "Longitude": 127.0923465,
+            "Latitude": 37.8196072
+        },
+        {
+            "TheaterCode": "0338",
+            "TheaterName": "CGV\uc5ed\uace1",
+            "Longitude": 126.8111031,
+            "Latitude": 37.4844487
+        },
+        {
+            "TheaterCode": "0004",
+            "TheaterName": "CGV\uc624\ub9ac",
+            "Longitude": 127.1069078,
+            "Latitude": 37.3405092
+        },
+        {
+            "TheaterCode": "0305",
+            "TheaterName": "CGV\uc624\uc0b0",
+            "Longitude": 127.0709978,
+            "Latitude": 37.1419761
+        },
+        {
+            "TheaterCode": "0307",
+            "TheaterName": "CGV\uc624\uc0b0\uc911\uc559",
+            "Longitude": 127.0709978,
+            "Latitude": 37.1419761
+        },
+        {
+            "TheaterCode": "0271",
+            "TheaterName": "CGV\uc6a9\uc778",
+            "Longitude": 127.20579,
+            "Latitude": 37.2350516
+        },
+        {
+            "TheaterCode": "0113",
+            "TheaterName": "CGV\uc758\uc815\ubd80",
+            "Longitude": 127.0465915,
+            "Latitude": 37.7373816
+        },
+        {
+            "TheaterCode": "0187",
+            "TheaterName": "CGV\uc758\uc815\ubd80\ud0dc\ud765",
+            "Longitude": 127.0440529,
+            "Latitude": 37.737919
+        },
+        {
+            "TheaterCode": "0205",
+            "TheaterName": "CGV\uc774\ucc9c",
+            "Longitude": 127.4441394,
+            "Latitude": 37.2797706
+        },
+        {
+            "TheaterCode": "0054",
+            "TheaterName": "CGV\uc77c\uc0b0",
+            "Longitude": 126.7724185,
+            "Latitude": 37.6552679
+        },
+        {
+            "TheaterCode": "0320",
+            "TheaterName": "CGV\uc815\uc655",
+            "Longitude": 126.7368994,
+            "Latitude": 37.345879
+        },
+        {
+            "TheaterCode": "0055",
+            "TheaterName": "CGV\uc8fd\uc804",
+            "Longitude": 127.1078311,
+            "Latitude": 37.3252583
+        },
+        {
+            "TheaterCode": "0148",
+            "TheaterName": "CGV\ud30c\uc8fc\ubb38\uc0b0",
+            "Longitude": 126.784138,
+            "Latitude": 37.866686
+        },
+        {
+            "TheaterCode": "0310",
+            "TheaterName": "CGV\ud30c\uc8fc\uc57c\ub2f9",
+            "Longitude": 126.759865,
+            "Latitude": 37.7132901
+        },
+        {
+            "TheaterCode": "0181",
+            "TheaterName": "CGV\ud310\uad50",
+            "Longitude": 127.111991,
+            "Latitude": 37.392584
+        },
+        {
+            "TheaterCode": "0195",
+            "TheaterName": "CGV\ud3c9\ucd0c",
+            "Longitude": 126.9622815,
+            "Latitude": 37.3930002
+        },
+        {
+            "TheaterCode": "0052",
+            "TheaterName": "CGV\ud3c9\ud0dd",
+            "Longitude": 127.0850266,
+            "Latitude": 36.9908558
+        },
+        {
+            "TheaterCode": "0214",
+            "TheaterName": "CGV\ud3c9\ud0dd\uc18c\uc0ac",
+            "Longitude": 127.1113252,
+            "Latitude": 37.0004968
+        },
+        {
+            "TheaterCode": "0309",
+            "TheaterName": "CGV\ud3ec\ucc9c",
+            "Longitude": 127.1498381,
+            "Latitude": 37.8294808
+        },
+        {
+            "TheaterCode": "0326",
+            "TheaterName": "CGV\ud558\ub0a8\ubbf8\uc0ac",
+            "Longitude": 127.191871,
+            "Latitude": 37.5640407
+        },
+        {
+            "TheaterCode": "0301",
+            "TheaterName": "CGV\ud654\uc131\ubd09\ub2f4",
+            "Longitude": 126.9554851,
+            "Latitude": 37.2189282
+        },
+        {
+            "TheaterCode": "0145",
+            "TheaterName": "CGV\ud654\uc815",
+            "Longitude": 126.8331579,
+            "Latitude": 37.63570070000001
+        }
+    ],
+    "03": [
+        {
+            "TheaterCode": "0007",
+            "TheaterName": "CGV\ub300\uc804",
+            "Longitude": 127.4088533,
+            "Latitude": 36.3206869
+        },
+        {
+            "TheaterCode": "0286",
+            "TheaterName": "CGV\ub300\uc804\uac00\uc218\uc6d0",
+            "Longitude": 127.3498387,
+            "Latitude": 36.3053708
+        },
+        {
+            "TheaterCode": "0154",
+            "TheaterName": "CGV\ub300\uc804\uac00\uc624",
+            "Longitude": 127.4580209,
+            "Latitude": 36.3069303
+        },
+        {
+            "TheaterCode": "0202",
+            "TheaterName": "CGV\ub300\uc804\ud0c4\ubc29",
+            "Longitude": 127.388856,
+            "Latitude": 36.3470278
+        },
+        {
+            "TheaterCode": "0127",
+            "TheaterName": "CGV\ub300\uc804\ud130\ubbf8\ub110",
+            "Longitude": 127.4375771,
+            "Latitude": 36.3511224
+        },
+        {
+            "TheaterCode": "0206",
+            "TheaterName": "CGV\uc720\uc131\ub178\uc740",
+            "Longitude": 127.3185212,
+            "Latitude": 36.37252489999999
+        }
+    ],
+    "04": [
+        {
+            "TheaterCode": "0220",
+            "TheaterName": "CGV\uad11\uc591",
+            "Longitude": 127.7226705,
+            "Latitude": 34.9353652
+        },
+        {
+            "TheaterCode": "0221",
+            "TheaterName": "CGV\uad11\uc591 \uc5d8\uc5d0\ud504\uc2a4\ud018\uc5b4",
+            "Longitude": 127.5671269,
+            "Latitude": 34.9626513
+        },
+        {
+            "TheaterCode": "0277",
+            "TheaterName": "CGV\uad70\uc0b0",
+            "Longitude": 126.7055466,
+            "Latitude": 35.9642553
+        },
+        {
+            "TheaterCode": "0237",
+            "TheaterName": "CGV\ub098\uc8fc",
+            "Longitude": 126.7929608,
+            "Latitude": 35.0240122
+        },
+        {
+            "TheaterCode": "0289",
+            "TheaterName": "CGV\ubaa9\ud3ec",
+            "Longitude": 126.4332428,
+            "Latitude": 34.7992248
+        },
+        {
+            "TheaterCode": "0280",
+            "TheaterName": "CGV\ubaa9\ud3ec\ud3c9\ud654\uad11\uc7a5",
+            "Longitude": 126.4332428,
+            "Latitude": 34.7992248
+        },
+        {
+            "TheaterCode": "0225",
+            "TheaterName": "CGV\uc11c\uc804\uc8fc",
+            "Longitude": 127.1065579,
+            "Latitude": 35.8167461
+        },
+        {
+            "TheaterCode": "0114",
+            "TheaterName": "CGV\uc21c\ucc9c",
+            "Longitude": 127.486352,
+            "Latitude": 34.95080799999999
+        },
+        {
+            "TheaterCode": "0268",
+            "TheaterName": "CGV\uc21c\ucc9c\uc2e0\ub300",
+            "Longitude": 127.5525339,
+            "Latitude": 34.9258908
+        },
+        {
+            "TheaterCode": "0315",
+            "TheaterName": "CGV\uc5ec\uc218\uc6c5\ucc9c",
+            "Longitude": 127.678599,
+            "Latitude": 34.7488233
+        },
+        {
+            "TheaterCode": "0020",
+            "TheaterName": "CGV\uc775\uc0b0",
+            "Longitude": 126.9737914,
+            "Latitude": 35.9581186
+        },
+        {
+            "TheaterCode": "0213",
+            "TheaterName": "CGV\uc804\uc8fc\uace0\uc0ac",
+            "Longitude": 127.142055,
+            "Latitude": 35.8203744
+        },
+        {
+            "TheaterCode": "0179",
+            "TheaterName": "CGV\uc804\uc8fc\ud6a8\uc790",
+            "Longitude": 127.1156425,
+            "Latitude": 35.8069155
+        },
+        {
+            "TheaterCode": "0186",
+            "TheaterName": "CGV\uc815\uc74d",
+            "Longitude": 126.8495728,
+            "Latitude": 35.5698824
+        }
+    ],
+    "05": [
+        {
+            "TheaterCode": "0065",
+            "TheaterName": "CGV\ub0a8\ud3ec",
+            "Longitude": 129.027192,
+            "Latitude": 35.098448
+        },
+        {
+            "TheaterCode": "0061",
+            "TheaterName": "CGV\ub300\uc5f0",
+            "Longitude": 129.0992043,
+            "Latitude": 35.1373466
+        },
+        {
+            "TheaterCode": "0042",
+            "TheaterName": "CGV\ub3d9\ub798",
+            "Longitude": 129.0853805,
+            "Latitude": 35.2218016
+        },
+        {
+            "TheaterCode": "0005",
+            "TheaterName": "CGV\uc11c\uba74",
+            "Longitude": 129.0637629,
+            "Latitude": 35.1492915
+        },
+        {
+            "TheaterCode": "0285",
+            "TheaterName": "CGV\uc11c\uba74\uc0bc\uc815\ud0c0\uc6cc",
+            "Longitude": 129.0594967,
+            "Latitude": 35.1530807
+        },
+        {
+            "TheaterCode": "0089",
+            "TheaterName": "CGV\uc13c\ud140\uc2dc\ud2f0",
+            "Longitude": 129.1297466,
+            "Latitude": 35.1687032
+        },
+        {
+            "TheaterCode": "0160",
+            "TheaterName": "CGV\uc544\uc2dc\uc544\ub4dc",
+            "Longitude": 129.0620613,
+            "Latitude": 35.1912811
+        },
+        {
+            "TheaterCode": "0306",
+            "TheaterName": "CGV\uc815\uad00",
+            "Longitude": 129.1783747,
+            "Latitude": 35.32092069999999
+        },
+        {
+            "TheaterCode": "0245",
+            "TheaterName": "CGV\ud558\ub2e8\uc544\ud2b8\ubab0\ub9c1",
+            "Longitude": 128.966336,
+            "Latitude": 35.1065693
+        },
+        {
+            "TheaterCode": "0318",
+            "TheaterName": "CGV\ud574\uc6b4\ub300",
+            "Longitude": 129.1589035,
+            "Latitude": 35.1632989
+        },
+        {
+            "TheaterCode": "0159",
+            "TheaterName": "CGV\ud654\uba85",
+            "Longitude": 129.0097562,
+            "Latitude": 35.2347315
+        },
+        {
+            "TheaterCode": "P004",
+            "TheaterName": "CINE de CHEF \uc13c\ud140",
+            "Longitude": 129.1297389,
+            "Latitude": 35.1687007
+        }
+    ],
+    "06": [
+        {
+            "TheaterCode": "0302",
+            "TheaterName": "CGV\uc81c\uc8fc",
+            "Longitude": 126.5273377,
+            "Latitude": 33.5000969
+        },
+        {
+            "TheaterCode": "0259",
+            "TheaterName": "CGV\uc81c\uc8fc\ub178\ud615",
+            "Longitude": 126.4783704,
+            "Latitude": 33.4859033
+        }
+    ],
+    "11": [
+        {
+            "TheaterCode": "0058",
+            "TheaterName": "CGV\ub300\uad6c",
+            "Longitude": 128.5949119,
+            "Latitude": 35.8712915
+        },
+        {
+            "TheaterCode": "0157",
+            "TheaterName": "CGV\ub300\uad6c\uc218\uc131",
+            "Longitude": 128.6404645,
+            "Latitude": 35.8211238
+        },
+        {
+            "TheaterCode": "0108",
+            "TheaterName": "CGV\ub300\uad6c\uc2a4\ud0c0\ub514\uc6c0",
+            "Longitude": 128.6865309,
+            "Latitude": 35.8321266
+        },
+        {
+            "TheaterCode": "0185",
+            "TheaterName": "CGV\ub300\uad6c\uc544\uce74\ub370\ubbf8",
+            "Longitude": 128.594279,
+            "Latitude": 35.869964
+        },
+        {
+            "TheaterCode": "0216",
+            "TheaterName": "CGV\ub300\uad6c\uc6d4\uc131",
+            "Longitude": 128.526742,
+            "Latitude": 35.8245656
+        },
+        {
+            "TheaterCode": "0117",
+            "TheaterName": "CGV\ub300\uad6c\uc774\uc2dc\uc544",
+            "Longitude": 128.636746,
+            "Latitude": 35.9217981
+        },
+        {
+            "TheaterCode": "0071",
+            "TheaterName": "CGV\ub300\uad6c\uce60\uace1",
+            "Longitude": 128.560346,
+            "Latitude": 35.944097
+        },
+        {
+            "TheaterCode": "0147",
+            "TheaterName": "CGV\ub300\uad6c\ud55c\uc77c",
+            "Longitude": 128.5953439,
+            "Latitude": 35.8704147
+        },
+        {
+            "TheaterCode": "0109",
+            "TheaterName": "CGV\ub300\uad6c\ud604\ub300",
+            "Longitude": 128.5908042,
+            "Latitude": 35.8671154
+        }
+    ],
+    "12": [
+        {
+            "TheaterCode": "0139",
+            "TheaterName": "CGV\uac15\ub989",
+            "Longitude": 128.8986385,
+            "Latitude": 37.7556866
+        },
+        {
+            "TheaterCode": "0144",
+            "TheaterName": "CGV\uc6d0\uc8fc",
+            "Longitude": 127.93055,
+            "Latitude": 37.3446625
+        },
+        {
+            "TheaterCode": "0281",
+            "TheaterName": "CGV\uc778\uc81c",
+            "Longitude": 128.1651423,
+            "Latitude": 38.0614163
+        },
+        {
+            "TheaterCode": "0070",
+            "TheaterName": "CGV\ucd98\ucc9c",
+            "Longitude": 127.7438915,
+            "Latitude": 37.850425
+        }
+    ],
+    "202": [
+        {
+            "TheaterCode": "0043",
+            "TheaterName": "CGV\uacc4\uc591",
+            "Longitude": 126.7345658,
+            "Latitude": 37.5336822
+        },
+        {
+            "TheaterCode": "0198",
+            "TheaterName": "CGV\ub0a8\uc8fc\uc548",
+            "Longitude": 126.6806962,
+            "Latitude": 37.4631822
+        },
+        {
+            "TheaterCode": "0021",
+            "TheaterName": "CGV\ubd80\ud3c9",
+            "Longitude": 126.7036385,
+            "Latitude": 37.521769
+        },
+        {
+            "TheaterCode": "0325",
+            "TheaterName": "CGV\uc1a1\ub3c4\ud0c0\uc784\uc2a4\ud398\uc774\uc2a4",
+            "Longitude": 126.6422984,
+            "Latitude": 37.3833431
+        },
+        {
+            "TheaterCode": "0247",
+            "TheaterName": "CGV\uc5f0\uc218\uc5ed",
+            "Longitude": 126.6771024,
+            "Latitude": 37.4176813
+        },
+        {
+            "TheaterCode": "0002",
+            "TheaterName": "CGV\uc778\ucc9c",
+            "Longitude": 126.7019408,
+            "Latitude": 37.4516923
+        },
+        {
+            "TheaterCode": "0118",
+            "TheaterName": "CGV\uc778\ucc9c\uacf5\ud56d",
+            "Longitude": 126.4499411,
+            "Latitude": 37.4487448
+        },
+        {
+            "TheaterCode": "0254",
+            "TheaterName": "CGV\uc778\ucc9c\ub17c\ud604",
+            "Longitude": 126.7086243,
+            "Latitude": 37.4021906
+        },
+        {
+            "TheaterCode": "0340",
+            "TheaterName": "CGV\uc778\ucc9c\ub3c4\ud654",
+            "Longitude": 126.6644632,
+            "Latitude": 37.4696547
+        },
+        {
+            "TheaterCode": "0258",
+            "TheaterName": "CGV\uc778\ucc9c\uc5f0\uc218",
+            "Longitude": 126.6834673,
+            "Latitude": 37.4061945
+        },
+        {
+            "TheaterCode": "0269",
+            "TheaterName": "CGV\uc778\ucc9c\ud559\uc775",
+            "Longitude": 126.6518427,
+            "Latitude": 37.4455386
+        },
+        {
+            "TheaterCode": "0308",
+            "TheaterName": "CGV\uc8fc\uc548\uc5ed",
+            "Longitude": 126.6804431,
+            "Latitude": 37.4655087
+        },
+        {
+            "TheaterCode": "0235",
+            "TheaterName": "CGV\uccad\ub77c",
+            "Longitude": 126.6415829,
+            "Latitude": 37.5322823
+        },
+        {
+            "TheaterCode": "0339",
+            "TheaterName": "DRIVE IN \uc2a4\ud018\uc5b4\uc6d0",
+            "Longitude": -79.6422539,
+            "Latitude": 43.5931073
+        }
+    ],
+    "204": [
+        {
+            "TheaterCode": "0263",
+            "TheaterName": "CGV\uac70\uc81c",
+            "Longitude": 128.6165811,
+            "Latitude": 34.8910524
+        },
+        {
+            "TheaterCode": "0330",
+            "TheaterName": "CGV\uacbd\uc0b0",
+            "Longitude": 128.736583,
+            "Latitude": 35.8329866
+        },
+        {
+            "TheaterCode": "0323",
+            "TheaterName": "CGV\uace0\uc131",
+            "Longitude": 128.3159817,
+            "Latitude": 34.9770128
+        },
+        {
+            "TheaterCode": "0053",
+            "TheaterName": "CGV\uad6c\ubbf8",
+            "Longitude": 128.3277412,
+            "Latitude": 36.13001089999999
+        },
+        {
+            "TheaterCode": "0240",
+            "TheaterName": "CGV\uae40\ucc9c\uc728\uace1",
+            "Longitude": 128.1834844,
+            "Latitude": 36.1147137
+        },
+        {
+            "TheaterCode": "0028",
+            "TheaterName": "CGV\uae40\ud574",
+            "Longitude": 128.8685729,
+            "Latitude": 35.2421624
+        },
+        {
+            "TheaterCode": "0311",
+            "TheaterName": "CGV\uae40\ud574\uc728\ud558",
+            "Longitude": 128.8135023,
+            "Latitude": 35.1699495
+        },
+        {
+            "TheaterCode": "0239",
+            "TheaterName": "CGV\uae40\ud574\uc7a5\uc720",
+            "Longitude": 128.8020226,
+            "Latitude": 35.191927
+        },
+        {
+            "TheaterCode": "0033",
+            "TheaterName": "CGV\ub9c8\uc0b0",
+            "Longitude": 128.5824031,
+            "Latitude": 35.237539
+        },
+        {
+            "TheaterCode": "0097",
+            "TheaterName": "CGV\ubd81\ud3ec\ud56d",
+            "Longitude": 129.3682009,
+            "Latitude": 36.0407079
+        },
+        {
+            "TheaterCode": "0272",
+            "TheaterName": "CGV\uc548\ub3d9",
+            "Longitude": 128.7492999,
+            "Latitude": 36.5611616
+        },
+        {
+            "TheaterCode": "0222",
+            "TheaterName": "CGV\uc591\uc0b0\ubb3c\uae08",
+            "Longitude": 129.0017586,
+            "Latitude": 35.3181063
+        },
+        {
+            "TheaterCode": "0234",
+            "TheaterName": "CGV\uc591\uc0b0\uc0bc\ud638",
+            "Longitude": 129.1678458,
+            "Latitude": 35.4138183
+        },
+        {
+            "TheaterCode": "0324",
+            "TheaterName": "CGV\uc9c4\uc8fc\ud601\uc2e0",
+            "Longitude": 128.1440675,
+            "Latitude": 35.180708
+        },
+        {
+            "TheaterCode": "0023",
+            "TheaterName": "CGV\ucc3d\uc6d0",
+            "Longitude": 128.6422741,
+            "Latitude": 35.2344255
+        },
+        {
+            "TheaterCode": "0079",
+            "TheaterName": "CGV\ucc3d\uc6d0\ub354\uc2dc\ud2f0",
+            "Longitude": 128.653346,
+            "Latitude": 35.2404285
+        },
+        {
+            "TheaterCode": "0283",
+            "TheaterName": "CGV\ucc3d\uc6d0\uc0c1\ub0a8",
+            "Longitude": 128.6812651,
+            "Latitude": 35.2226627
+        },
+        {
+            "TheaterCode": "0156",
+            "TheaterName": "CGV\ud1b5\uc601",
+            "Longitude": 128.4255946,
+            "Latitude": 34.8572432
+        },
+        {
+            "TheaterCode": "0045",
+            "TheaterName": "CGV\ud3ec\ud56d",
+            "Longitude": 129.3488979,
+            "Latitude": 36.0127942
+        }
+    ],
+    "205": [
+        {
+            "TheaterCode": "0261",
+            "TheaterName": "CGV\ub17c\uc0b0",
+            "Longitude": 127.0976201,
+            "Latitude": 36.1828503
+        },
+        {
+            "TheaterCode": "0207",
+            "TheaterName": "CGV\ub2f9\uc9c4",
+            "Longitude": 126.6300242,
+            "Latitude": 36.9019704
+        },
+        {
+            "TheaterCode": "0275",
+            "TheaterName": "CGV\ubcf4\ub839",
+            "Longitude": 126.592952,
+            "Latitude": 36.3496619
+        },
+        {
+            "TheaterCode": "0091",
+            "TheaterName": "CGV\uc11c\uc0b0",
+            "Longitude": 126.4565232,
+            "Latitude": 36.7786579
+        },
+        {
+            "TheaterCode": "0219",
+            "TheaterName": "CGV\uc138\uc885",
+            "Longitude": 127.2476168,
+            "Latitude": 36.5026014
+        },
+        {
+            "TheaterCode": "0044",
+            "TheaterName": "CGV\ucc9c\uc548",
+            "Longitude": 127.1483595,
+            "Latitude": 36.8077192
+        },
+        {
+            "TheaterCode": "0332",
+            "TheaterName": "CGV\ucc9c\uc548\uc2dc\uccad",
+            "Longitude": 127.1101197,
+            "Latitude": 36.8190934
+        },
+        {
+            "TheaterCode": "0293",
+            "TheaterName": "CGV\ucc9c\uc548\ud130\ubbf8\ub110",
+            "Longitude": 127.1556665,
+            "Latitude": 36.8194013
+        },
+        {
+            "TheaterCode": "0110",
+            "TheaterName": "CGV\ucc9c\uc548\ud39c\ud0c0\ud3ec\ud2b8",
+            "Longitude": 127.1011573,
+            "Latitude": 36.7984755
+        },
+        {
+            "TheaterCode": "0228",
+            "TheaterName": "CGV\uccad\uc8fc(\uc11c\ubb38)",
+            "Longitude": 127.4869444,
+            "Latitude": 36.635
+        },
+        {
+            "TheaterCode": "0297",
+            "TheaterName": "CGV\uccad\uc8fc\uc131\uc548\uae38",
+            "Longitude": 127.488085,
+            "Latitude": 36.6352405
+        },
+        {
+            "TheaterCode": "0282",
+            "TheaterName": "CGV\uccad\uc8fc\uc728\ub7c9",
+            "Longitude": 127.4943269,
+            "Latitude": 36.6659908
+        },
+        {
+            "TheaterCode": "0142",
+            "TheaterName": "CGV\uccad\uc8fc\uc9c0\uc6f0\uc2dc\ud2f0",
+            "Longitude": 127.4278113,
+            "Latitude": 36.6431532
+        },
+        {
+            "TheaterCode": "0319",
+            "TheaterName": "CGV\uccad\uc8fc\ud130\ubbf8\ub110",
+            "Longitude": 127.4312574,
+            "Latitude": 36.6260739
+        },
+        {
+            "TheaterCode": "0284",
+            "TheaterName": "CGV\ucda9\ubd81\ud601\uc2e0",
+            "Longitude": 127.5405241,
+            "Latitude": 36.9081646
+        },
+        {
+            "TheaterCode": "0328",
+            "TheaterName": "CGV\ucda9\uc8fc\uad50\ud604",
+            "Longitude": 127.9279125,
+            "Latitude": 36.9813677
+        },
+        {
+            "TheaterCode": "0217",
+            "TheaterName": "CGV\ud64d\uc131",
+            "Longitude": 126.676053,
+            "Latitude": 36.6008971
+        }
+    ],
+    "206": [
+        {
+            "TheaterCode": "0295",
+            "TheaterName": "CGV\uad11\uc8fc\uae08\ub0a8\ub85c",
+            "Longitude": 126.9147562,
+            "Latitude": 35.1467724
+        },
+        {
+            "TheaterCode": "0193",
+            "TheaterName": "CGV\uad11\uc8fc\uc0c1\ubb34",
+            "Longitude": 126.8510189,
+            "Latitude": 35.154201
+        },
+        {
+            "TheaterCode": "0210",
+            "TheaterName": "CGV\uad11\uc8fc\uc6a9\ubd09",
+            "Longitude": 126.9120058,
+            "Latitude": 35.1828175
+        },
+        {
+            "TheaterCode": "0218",
+            "TheaterName": "CGV\uad11\uc8fc\ucca8\ub2e8",
+            "Longitude": 126.8507426,
+            "Latitude": 35.2163331
+        },
+        {
+            "TheaterCode": "0244",
+            "TheaterName": "CGV\uad11\uc8fc\ucda9\uc7a5\ub85c",
+            "Longitude": 126.9130772,
+            "Latitude": 35.148767
+        },
+        {
+            "TheaterCode": "0090",
+            "TheaterName": "CGV\uad11\uc8fc\ud130\ubbf8\ub110",
+            "Longitude": 126.879307,
+            "Latitude": 35.1603238
+        },
+        {
+            "TheaterCode": "0215",
+            "TheaterName": "CGV\uad11\uc8fc\ud558\ub0a8",
+            "Longitude": 126.806528,
+            "Latitude": 35.1779196
+        }
+    ],
+    "207": [
+        {
+            "TheaterCode": "0128",
+            "TheaterName": "CGV\uc6b8\uc0b0\uc0bc\uc0b0",
+            "Longitude": 129.3390043,
+            "Latitude": 35.5415409
+        },
+        {
+            "TheaterCode": "0264",
+            "TheaterName": "CGV\uc6b8\uc0b0\uc2e0\ucc9c",
+            "Longitude": 129.3556921,
+            "Latitude": 35.6348568
+        },
+        {
+            "TheaterCode": "0246",
+            "TheaterName": "CGV\uc6b8\uc0b0\uc9c4\uc7a5",
+            "Longitude": 129.3559965,
+            "Latitude": 35.5758658
+        }
+    ]
+}

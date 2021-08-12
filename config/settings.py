@@ -46,7 +46,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '[get_secret("SECRET_KEY")]')
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 
-ALLOWED_HOSTS = ['movetomovie.herokuapp.com',]
+ALLOWED_HOSTS = [
+    'movetomovie.herokuapp.com',
+    '127.0.0.1',
+]
 
 
 # Application definition

@@ -140,10 +140,10 @@ cython_debug/
 
 .idea
 
-secrets.json
+# secrets.json
 
 core/.DS_Store
 core/theater/.DS_Store
-core/theater/data/
+# core/theater/data/
 
-core/theater/data.zip
+# core/theater/data.zip

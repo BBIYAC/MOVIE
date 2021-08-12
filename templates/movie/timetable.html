@@ -25,6 +25,18 @@
                 margin-left: 60px;
                 margin-right: auto;
             }
+            .movieList_empty{
+                margin-top: 30%;
+            }
+            #movieList{
+                -ms-overflow-style: none;
+                width: 100%; 
+                height: 700px; 
+                overflow: auto; 
+            }
+            #movieList::-webkit-scrollbar{
+                display:none; 
+            }
         </style>
     </head>
 
@@ -76,37 +88,38 @@
             tags: $('.movieList_button').val(),
             dataType: "json",
 
-            success: function (data) {
+            success: function(data) {
                 var movieListsAPI = "";
                 movieListsAPI +="<table class= 'data'>"
                 for (var i = 0; i < data.theater_info.length; i++) {
-                    var movieLists = data.theater_info[i].MoiveLists
-
+                    // var movieLists = data.theater_info[i].MoiveLists
+                    var movieLists = data.theater_info[i].MoiveLists;
                     for (var j =0 ; j <movieLists.length; j ++){
-                        
                         for (var k=0; k< movieLists[j].length; k++){
-                            movieListsAPI += "<tr>"
-                            movieListsAPI += "<td rowspan='2'>"
-
+                            movieListsAPI += "<tr>";
+                            movieListsAPI += "<td rowspan='2'>";
                             if (data.theater_info[i].TheaterName.includes('CGV')){
-                                movieListsAPI += "<img src='{% static 'img/cgv.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                movieListsAPI += "<img src='{% static 'img/cgv.png' %}' width='80px' height='80px' style='margin: 20px 30px'>";
                             }
                             else {
-                                movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>";
                             }
-
-                            movieListsAPI += "</td>"
-                            movieListsAPI += "<td rowspan='2' style='font-size: 50px;'>" + movieLists[j][k].StartTime + "</td>"
-                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>"
-                            movieListsAPI += "</tr>"
-                            movieListsAPI += "<tr>"
-                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>"
-                            movieListsAPI += "</tr>"
+                            movieListsAPI += "</td>";
+                            movieListsAPI += "<td class='timetable' rowspan='2' style='font-size: 50px;'>" + movieLists[j][k].StartTime + "</td>";
+                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>";
+                            movieListsAPI += "</tr>";
+                            movieListsAPI += "<tr>";
+                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>";
+                            movieListsAPI += "</tr>";
                         }
                     }
                 }
-                movieListsAPI += "</table>"
+                movieListsAPI += "</table>";
                 $('[id="movieList"]').html(movieListsAPI);
+                if( $('.data').is(':empty') ) {
+                    movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
+                    $('[id="movieList"]').html(movieListEmpty);
+                }
             },
             error: function (request, status, error) {
                 console.log('실패');
@@ -156,8 +169,11 @@
                         }
                     }
                     movieListsAPI += "</table>";
-                    console.log(movieListsAPI);
                     $('[id="movieList"]').html(movieListsAPI);
+                    if( $('.data').is(':empty') ) {
+                    movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
+                    $('[id="movieList"]').html(movieListEmpty);
+                }
                 }
             });
         });
