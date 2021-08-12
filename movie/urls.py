@@ -5,7 +5,7 @@ import movie.views as view
 
 urlpatterns = [
     path('index/', view.index, name='index'),
-    path('rank/', view.rank, name='rank'),
+    path('', view.rank, name='rank'),
     path('near-theater/', view.nearTheater, name='nearTheater'),
     path('timetable/', view.timetable, name='timetable'),
     path('location/', view.location, name='location'),
