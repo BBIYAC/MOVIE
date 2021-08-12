@@ -164,23 +164,36 @@ def movie_list(request):
     return render(request, 'movie/timetable.html', {'datas': datas})
 
 
+def get_movie_poster(movie_name):
+    base_url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='
+    search_url = base_url + quote(movie_name)
+    html = urlopen(search_url)
+    soup = BeautifulSoup(html, 'html.parser')
+    img_url = soup.select_one(
+        '#main_pack > div.sc_new.cs_common_module.case_empasis._au_movie_content_wrap > div.cm_content_wrap > div.cm_content_area._cm_content_area_info > div.cm_info_box > div.detail_info > a > img')[
+        'src']
+    return img_url
+
 
 @csrf_exempt
 def timetable(request):
-    
+
+    movie_name = request.GET['movie_name']
+    address = request.GET['address']
+    img_url = get_movie_poster(movie_name)
+
+    # print(f"name: {movie_name}")
+    # print(f"movie_img: {movie_img}")
+    # print(f"address: {address}")
+
     location = Location(LOCATION_API_KEY)
-    movie_name = request.POST.get('selected_movie')
+
     date = request.POST.get('date')
-    if request.POST.get('moviePlace'):
-        movie_place = request.POST.get('moviePlace')
-        findLoc = location.get_place_location(movie_place)['location']
-        lat = findLoc['lat']
-        lng = findLoc['lng']
-    else:
-        movie_place = 'here'
-        myloc = location.get_location()
-        lat = myloc['lat']
-        lng = myloc['lng']
+
+    findLoc = location.get_place_location(address)['location']
+    lat = findLoc['lat']
+    lng = findLoc['lng']
+
 
     theater_list = []
 
@@ -287,8 +300,8 @@ def timetable(request):
     for theater in theater_lists:
         theater_info.append(theater)
 
-    movie_name = request.GET['movie_name']
-    img_url = request.GET['img_url']
+    # movie_name = request.GET['movie_name']
+    # img_url = request.GET['img_url']
 
     days = ['일', '월', '화', '수', '목', '금', '토']
     weekday = []
@@ -305,7 +318,7 @@ def timetable(request):
     datas = {
         'date': weekday,
         'movie_name': movie_name,
-        'movie_place': movie_place,
+        'movie_place': address,
         'theater_info': theater_info,
         'img_url': img_url
     }

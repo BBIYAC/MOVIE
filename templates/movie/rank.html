@@ -85,7 +85,7 @@
                     {% if forloop.counter|divisibleby:"2" %}
                         <td>
                             <h1>{{ value.rank }}순위</h1>
-                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&img_url={{value.img}}" >
+                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&address={{ datas.address }}" >
                                 <img class="moviePoster" src="{{ value.img }}" width="362" />
                             </a>
                             
@@ -96,7 +96,7 @@
                     <tr>
                         <td>
                             <h1>{{ value.rank }}순위</h1>
-                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&img_url={{value.img}}" >
+                            <a href="{% url 'timetable' %}?movie_name={{value.name}}&address={{ datas.address }}" >
                                 <img class="moviePoster" src="{{ value.img }}" width="362" />
                             </a>
                         </td>
