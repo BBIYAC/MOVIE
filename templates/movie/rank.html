@@ -6,6 +6,7 @@
         <style type="text/css">
             body{
                 margin: 0;
+                height: 100%;
             }
             .header {
                 height: 180px; 
@@ -26,7 +27,7 @@
             }
             .location > p{
                 text-align: center;
-                width: 70%;
+                max-width: 70%;
                 line-height: 180px;
                 height: 180px;
                 margin: 0 20px 0 auto;
@@ -71,23 +72,7 @@
             }
 
 
-            #loading {
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: rgb(107, 40, 107);
-            animation: spin 1s ease-in-out infinite;
-            -webkit-animation: spin 1s ease-in-out infinite;
-            }
-
-            @keyframes spin {
-            to { -webkit-transform: rotate(360deg); }
-            }
-            @-webkit-keyframes spin {
-            to { -webkit-transform: rotate(360deg); }
-            }
+            
         </style>
     </head>
 
@@ -130,14 +115,8 @@
             </table>
            </div>
        </div>
-       <div id="loading"></div>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-       <script type="text/javascript">
-            $(window).ready(function () {
-                $("#loading").delay("1000").fadeOut();
-            });
-       </script>
+       
 
     </body>
 

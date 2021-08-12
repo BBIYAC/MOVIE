@@ -3,9 +3,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MoveToMovie</title>
+    <title>MoveMovie</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <style type="text/css">
+        #loading {
+                display: inline-block;
+                width: 150px;
+                height: 150px;
+                border: 3px solid rgba(255,255,255,.3);
+                border-radius: 50%;
+                border-top-color: rgb(107, 40, 107);
+                animation: spin 1s ease-in-out infinite;
+                -webkit-animation: spin 1s ease-in-out infinite;
+            }
+
+            @keyframes spin {
+            to { -webkit-transform: rotate(360deg); }
+            }
+            @-webkit-keyframes spin {
+            to { -webkit-transform: rotate(360deg); }
+            }
+    </style>
 </head>
 <body>
 
@@ -13,5 +32,12 @@
 
 {% endblock content %}
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
+        $("#loading").delay("1000").fadeOut();
+    }
+</script>
 </body>
 </html>
