@@ -8,8 +8,23 @@
             .back {float:left; width: 90px; height: 90px;}
             .wrap {text-align: center; padding: 10px 65px; font-size: 55px; font-family:나눔스퀘어_ac;}
             .line1 {width: 800px; height: 4px; text-align: center; background-color: rgb(255, 255, 255);}
-            .day {font-size: 37px; text-align: center; margin: 10px 40px 30px;}
-            .data {font-family: 나눔스퀘어_ac; }
+            .day {font-size: 37px; text-align: center; margin: 10px 30px 30px;}
+            .day.selected{
+                font-size: 50px;
+                font-weight: bold;
+            }
+            .data {
+                font-family: 나눔스퀘어_ac; 
+                width: 95%;
+            }
+            .movieList_button{
+                background-color: white;
+                border: 0;
+            }
+            .timetable{
+                margin-left: 60px;
+                margin-right: auto;
+            }
         </style>
     </head>
 
@@ -29,16 +44,23 @@
             <!--요일날짜-->
             <table  style="width:60%; margin:auto; text-align: center">
                 {% for date in datas.date %}
-                    <td> <p class="day">{{ date.text }}<br>{{ date.day }}</p> </td>
-                    <input type="button" class="movieList_button" value="{{date.month_day}}" />
+                    <td>    
+                        
+                        {% if date.day == '12' %}
+                        <p class="day selected">{{ date.text }}<br> 
+                        {% else %}
+                        <p class="day">{{ date.text }}<br> 
+                        {% endif %}
+                            {{ date.day }}
+                            <input type="button" name="movieList" class="day movieList_button" value="{{date.month_day}}" hidden/> 
+                        </p> 
+                        
+                    </td>
                 {% endfor %}
             </table>
 
         <hr>
             <div id="movieList">
-
-        <hr>
-            <div id="movie"></div>
 
         </div>
         
@@ -47,88 +69,98 @@
     <!--ajax 통신 -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
-{#        {% for date in datas.date %}#}
-                $.ajax({
-                {# 반복하면서 json을 가져옴   #}
-                url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021{{ datas.date.0.month_day }}",
-                name: "{{date.month_day}}",
-                tags: "{{date.month_day}}",
-                dataType: "json",
 
-                success: function (data) {
-                    var movieListsAPI = "";
-                    movieListsAPI +="<table class= 'data'>"
-                    for (var i = 0; i < data.theater_info.length; i++) {
-                        var movieLists = data.theater_info[i].MoiveLists
+            $.ajax({
+            url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021{{ datas.date.0.month_day }}",
+            name: $('.movieList_button').val(),
+            tags: $('.movieList_button').val(),
+            dataType: "json",
 
-                        for (var j =0 ; j <movieLists.length; j ++){
+            success: function (data) {
+                var movieListsAPI = "";
+                movieListsAPI +="<table class= 'data'>"
+                for (var i = 0; i < data.theater_info.length; i++) {
+                    var movieLists = data.theater_info[i].MoiveLists
+
+                    for (var j =0 ; j <movieLists.length; j ++){
+                        
+                        for (var k=0; k< movieLists[j].length; k++){
                             movieListsAPI += "<tr>"
                             movieListsAPI += "<td rowspan='2'>"
+
                             if (data.theater_info[i].TheaterName.includes('CGV')){
-                                movieListsAPI += "<img src='{% static 'img/cgv.jpg' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                movieListsAPI += "<img src='{% static 'img/cgv.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
                             }
                             else {
                                 movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
                             }
+
                             movieListsAPI += "</td>"
-                            movieListsAPI += "<td rowspan='2' width='410px' style='font-size: 50px;'>" + movieLists[j][0].StartTime + "</td>"
+                            movieListsAPI += "<td rowspan='2' style='font-size: 50px;'>" + movieLists[j][k].StartTime + "</td>"
                             movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>"
                             movieListsAPI += "</tr>"
                             movieListsAPI += "<tr>"
-                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][0].RemainingSeat + "</td>"
+                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>"
                             movieListsAPI += "</tr>"
                         }
                     }
-                    movieListsAPI += "</table>"
-                    $('[id="movie"]').html(movieListsAPI);
-                },
-                error: function (request, status, error) {
-                    console.log('실패');
                 }
-            });
-{#        {% endfor %}#}
+                movieListsAPI += "</table>"
+                $('[id="movieList"]').html(movieListsAPI);
+            },
+            error: function (request, status, error) {
+                console.log('실패');
+            }
+        });
 
-
-        $(function(){
-            $(".movieList_button").click(function(){
-                var search_date = $('.movieList_button').val();
-                console.log(search_date)
-                console.log("---")
-                $.ajax({
-                    url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021"+search_date,
-                    name: "{{date.month_day}}",
-                    tags: "{{date.month_day}}",
-                    dataType: "json",
-                    success: function(data) {
-                        var movieListsAPI = "";
-                        movieListsAPI +="<table class= 'data'>"
-                        for (var i = 0; i < data.theater_info.length; i++) {
-                            var movieLists = data.theater_info[i].MoiveLists
-
-                            for (var j =0 ; j <movieLists.length; j ++){
-                                movieListsAPI += "<tr>"
-                                movieListsAPI += "<td rowspan='2'>"
+        
+        var movieListFunc = function (){
+            
+        }
+        
+        $(".day").click(function(){
+            search_date = $(this).find('.movieList_button').val();
+            if( !$(this).hasClass('selected')){
+                $(".day").removeClass('selected');
+                $(this).toggleClass('selected');
+            }
+            $.ajax({
+                url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021"+search_date,
+                name: search_date,
+                tags: search_date,
+                dataType: "json",
+                success: function(data) {
+                    var movieListsAPI = "";
+                    movieListsAPI +="<table class= 'data'>"
+                    for (var i = 0; i < data.theater_info.length; i++) {
+                        // var movieLists = data.theater_info[i].MoiveLists
+                        var movieLists = data.theater_info[i].MoiveLists;
+                        for (var j =0 ; j <movieLists.length; j ++){
+                            for (var k=0; k< movieLists[j].length; k++){
+                                movieListsAPI += "<tr>";
+                                movieListsAPI += "<td rowspan='2'>";
                                 if (data.theater_info[i].TheaterName.includes('CGV')){
-                                    movieListsAPI += "<img src='{% static 'img/cgv.jpg' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                    movieListsAPI += "<img src='{% static 'img/cgv.png' %}' width='80px' height='80px' style='margin: 20px 30px'>";
                                 }
                                 else {
-                                    movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                    movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>";
                                 }
-                                movieListsAPI += "</td>"
-                                movieListsAPI += "<td rowspan='2' width='410px' style='font-size: 50px;'>" + movieLists[j][0].StartTime + "</td>"
-                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>"
-                                movieListsAPI += "</tr>"
-                                movieListsAPI += "<tr>"
-                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][0].RemainingSeat + "</td>"
-                                movieListsAPI += "</tr>"
+                                movieListsAPI += "</td>";
+                                movieListsAPI += "<td class='timetable' rowspan='2' style='font-size: 50px;'>" + movieLists[j][k].StartTime + "</td>";
+                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>";
+                                movieListsAPI += "</tr>";
+                                movieListsAPI += "<tr>";
+                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>";
+                                movieListsAPI += "</tr>";
                             }
                         }
-                        movieListsAPI += "</table>"
-                        $('[id="movieList"]').html(movieListsAPI);
                     }
-                });
-            })
-        })
+                    movieListsAPI += "</table>";
+                    console.log(movieListsAPI);
+                    $('[id="movieList"]').html(movieListsAPI);
+                }
+            });
+        });
 
     </script>
 {% endblock content %}

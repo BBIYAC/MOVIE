@@ -494,7 +494,7 @@ def find_moive_theater(request):
                 lotte_movie_schedules.append(schedules)
 
         if not lotte_movie_schedules:
-            lotte_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+            lotte_movie_schedules.append({'StartTime': 'None', 'TotalSeatCount':'None', 'RemainingSeat': 'None'})
 
         # print(lotte_movie_schedules)
         # print(type(lotte_movie_schedules))
@@ -538,15 +538,17 @@ def find_moive_theater(request):
                     # print(f"schedule: {schedule}")
                     startTime = schedule[0]
                     remainingSeat = schedule[1][4:-1]
+                    TotalSeatCount = schedule[2][1:-1]
                     handle_scedule_data.append({
                         'StartTime': startTime,
-                        'RemainingSeat': remainingSeat
+                        'RemainingSeat': remainingSeat,
+                        'TotalSeatCount': TotalSeatCount
                     })
                     # print(handle_scedule_data)
                     cgv_movie_schedules.append(handle_scedule_data)
 
         if not cgv_movie_schedules:
-            cgv_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+            cgv_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None', 'TotalSeatCount': 'None'})
 
         # print(f"cgv_movie_schedules: {cgv_movie_schedules}")
         # print(f"cgv_movie_schedules: {type(cgv_movie_schedules)}")

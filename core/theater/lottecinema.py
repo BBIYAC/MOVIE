@@ -110,7 +110,8 @@ class LotteCinema(object):
                 schedules = movie_id_to_info[entry.get('MovieCode')].setdefault('Schedules', [])
                 schedule = {
                     'StartTime': '{}'.format(entry.get('StartTime')),
-                    'RemainingSeat': int(entry.get('TotalSeatCount')) - int(entry.get('BookingSeatCount'))
+                    'TotalSeatCount' : int(entry.get('TotalSeatCount')),
+                    'RemainingSeat': int(entry.get('BookingSeatCount'))
                 }
                 schedules.append(schedule)
             return movie_id_to_info

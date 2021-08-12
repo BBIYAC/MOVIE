@@ -35,7 +35,9 @@ def get_timetable(movie):
         else:
             time = time.get_text()
         seat = timetable.select_one('a > span').get_text()
-        tuple = (time, seat)
+        total = timetable.parent.parent.parent.select_one('div.info-hall > ul > li:nth-child(3)').get_text().replace('\r\n                                                        ','')
+        tuple = (time, seat, total)
+        # print(f"tuple:{tuple}")
         tuples.append(tuple)
     return tuples
 
@@ -135,6 +137,7 @@ class CGV():
             date = target_dt.strftime('%Y%m%d')
         url = url + str("?") + str("areacode") + "=" + areacode + str("&theatercode") + "=" + theatercode + str("&date") + "=" + target_dt_str
         # print(url)
+        # http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode=03&theatercode=0202&date=20210812
         headers = {'content-type': 'application/json'}
         response = requests.post(url, headers=headers)
 
