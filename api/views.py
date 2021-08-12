@@ -1,5 +1,7 @@
+import ast
 import os
 import json
+import math
 from pathlib import Path
 from django.http import HttpResponse, Http404, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -71,7 +73,7 @@ def test(request):
 
 
 @csrf_exempt
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def movieRank(request):
     '''
     To get movie rank
@@ -104,7 +106,7 @@ def movieRank(request):
     response_data = {}
     response_data['api'] = 'POST Movie Rank'
 
-    if request.method == 'POST':
+    if request.method == 'POST' or 'GET':
         box = BoxOffice(BOXOFFICE_API_KEY)
         movies = box.get_movies()
         movie_lists = box.simplify(movies)
@@ -277,8 +279,9 @@ def filtered_lottecinema_movie_list(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         TheaterID = data.get('TheaterID')
+        date = ''
         cinema = LotteCinema()
-        movie_list = cinema.get_movie_list(TheaterID)
+        movie_list = cinema.get_movie_list(TheaterID, date)
 
         response_data['response'] = '200'
         response_data['movie_lists'] = movie_list
@@ -413,3 +416,163 @@ def filtered_cgv_movie_list(request):
         response_data['response'] = '400'
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def filter_nearest_theater(theater_list, pos_latitude, pos_longitude, n=3):
+    '''
+    To filter by location to get nearest theater count 3
+    :param theater_list:
+    :param pos_latitude:
+    :param pos_longitude:
+    :param n:
+    :return:
+    '''
+
+    def distance(x1, x2, y1, y2):
+        '''
+        TO get distance (x1, x2) ~ (y1, y2)
+        :param x1:
+        :param x2:
+        :param y1:
+        :param y2:
+        :return:
+        '''
+        dx = float(x1) - float(x2)
+        dy = float(y1) - float(y2)
+        distance = math.sqrt(dx ** 2 + dy ** 2)
+        return distance
+
+    distance_to_theater = []
+    for theater in theater_list:
+        get_distance = distance(pos_latitude, theater.get('Latitude'), pos_longitude, theater.get('Longitude'))
+        distance_to_theater.append((get_distance, theater))
+
+    return [theater for distance, theater in sorted(distance_to_theater, key=lambda x: x[0])[:n]]
+
+
+@csrf_exempt
+@api_view(['GET'])
+def find_moive_theater(request):
+    #location
+    lat_string = request.GET['lat']
+    lat = float(ast.literal_eval(lat_string))
+    lng_string = request.GET['lng']
+    lng = float(ast.literal_eval(lng_string))
+
+    #date
+    date = request.GET['date']
+    date = str(ast.literal_eval(date))
+
+    #movie
+    movie_name = request.GET['movie_name']
+    movie_name = str(ast.literal_eval(movie_name))
+
+    # print(lat, lng, date, movie_name)
+    # print(type(lat), type(lng), type(date), type(movie_name))
+
+    theater_list = []
+
+    # LOTTE
+    Lcinema = LotteCinema()
+    lotte_theater_lists = Lcinema.filter_nearest_theater(Lcinema.get_theater_list(), lat, lng)
+
+    for lotte_theater in lotte_theater_lists:
+        lotte_movie_schedules = []
+        theaterID = lotte_theater.get('TheaterID')
+        theaterName = lotte_theater.get('TheaterName')
+        theaterLng = lotte_theater.get('Longitude')
+        theaterLat = lotte_theater.get('Latitude')
+        movie_lists = Lcinema.get_movie_list(theaterID, date)
+        # print(f"theaterID: {theaterID}, theaterName: {theaterName}, theaterLng: {theaterLng}, movie_lists: {movie_lists}")
+
+        for key, value in movie_lists.items():
+            # print(key, value)
+            if value.get('Name') == movie_name:
+                # print(key, value)
+                schedules = value.get('Schedules')
+                # print(schedules)
+                lotte_movie_schedules.append(schedules)
+
+        if not lotte_movie_schedules:
+            lotte_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+
+        # print(lotte_movie_schedules)
+        # print(type(lotte_movie_schedules))
+
+        theater_list.append({
+            'TheaterID': theaterID,
+            'TheaterName': theaterName,
+            'Longitude': theaterLng,
+            'Latitude': theaterLat,
+            'MoiveLists': lotte_movie_schedules
+        })
+        # print("---")
+    # print(lotte_theater_info)
+
+    # CGV
+    Ccinema = CGV()
+    cgv_theater_lists = Ccinema.filter_nearest_theater(Ccinema.get_theater_list(), lat, lng)
+
+    for cgv_theater in cgv_theater_lists:
+        # print(cgv_theater)
+        cgv_movie_schedules = []
+        theaterID = cgv_theater.get('TheaterCode')
+        theaterName = cgv_theater.get('TheaterName')
+        theaterLng = cgv_theater.get('Longitude')
+        theaterLat = cgv_theater.get('Latitude')
+        areacode = cgv_theater.get('RegionCode')
+        movie_lists = Ccinema.get_movie_list(areacode, theaterID, date)
+        # print(f"theaterID: {theaterID}, theaterName: {theaterName}, theaterLng: {theaterLng}, movie_lists: {movie_lists}")
+
+        for key, value in movie_lists.items():
+            # print(key, value)
+            if value.get('Name') == movie_name:
+                # print(key, value)
+                schedules = value.get('Schedules')
+                # print('---')
+                schedules = schedules[0]
+                # print(schedules)
+                # print(type(schedules))
+                for schedule in schedules:
+                    handle_scedule_data = []
+                    # print(f"schedule: {schedule}")
+                    startTime = schedule[0]
+                    remainingSeat = schedule[1][4:-1]
+                    handle_scedule_data.append({
+                        'StartTime': startTime,
+                        'RemainingSeat': remainingSeat
+                    })
+                    # print(handle_scedule_data)
+                    cgv_movie_schedules.append(handle_scedule_data)
+
+        if not cgv_movie_schedules:
+            cgv_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+
+        # print(f"cgv_movie_schedules: {cgv_movie_schedules}")
+        # print(f"cgv_movie_schedules: {type(cgv_movie_schedules)}")
+
+        theater_list.append({
+            'TheaterID': theaterID,
+            'TheaterName': theaterName,
+            'Longitude': theaterLng,
+            'Latitude': theaterLat,
+            'MoiveLists': cgv_movie_schedules
+        })
+        # print("---")
+
+    # print(lotte_theater_info)
+    # print("---")
+    # print(cgv_theater_info)
+
+    theater_info = []
+    theater_lists = filter_nearest_theater(theater_list, lat, lng, 3)
+
+    for theater in theater_lists:
+        theater_info.append(theater)
+
+    datas = {
+        'date': date,
+        'theater_info': theater_info,
+    }
+
+    return HttpResponse(json.dumps(datas), content_type="application/json")

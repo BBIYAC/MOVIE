@@ -92,10 +92,12 @@ class LotteCinema(object):
         '''
         url = self.base_url_movie_list
         if date:
-            target_dt_str = date
+            target_dt_str = datetime.strptime(date, '%Y%m%d')
+            target_dt_str = target_dt_str.strftime('%Y-%m-%d')
         else:
             target_dt = datetime.now()
             target_dt_str = target_dt.strftime('%Y-%m-%d')
+
         payload = self.make_payload(MethodName='GetPlaySequence', playDate=target_dt_str, cinemaID=theater_id, representationMovieCode='')
         with urlopen(url, data=payload) as fin:
             json_content = self.byte_to_json(fin)

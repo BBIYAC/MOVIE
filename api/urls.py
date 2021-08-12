@@ -11,4 +11,6 @@ urlpatterns = [
 
     path('near-cgv/', view.filter_nearest_cgv, name='filter_nearest_cgv'),
     path('selected-cgv-movie-list/', view.filtered_cgv_movie_list, name='filtered_cgv_movie_list'),
+
+    path('movie-list/', view.find_moive_theater, name='find_moive_theater'),
 ]

@@ -126,12 +126,14 @@ class CGV():
         '''
         url = self.base_url
         if date:
-            date = datetime.strptime(date, '%Y-%m-%d')
-            date = date.strftime('%Y%m%d')
+            target_dt_str = datetime.strptime(date, '%Y%m%d')
+            target_dt_str = target_dt_str.strftime('%Y%m%d')
+            # date = datetime.strptime(date, '%Y-%m-%d')
+            # date = date.strftime('%Y%m%d')
         else:
             target_dt = datetime.now()
             date = target_dt.strftime('%Y%m%d')
-        url = url + str("?") + str("areacode") + "=" + areacode + str("&theatercode") + "=" + theatercode + str("&date") + "=" + date
+        url = url + str("?") + str("areacode") + "=" + areacode + str("&theatercode") + "=" + theatercode + str("&date") + "=" + target_dt_str
         # print(url)
         headers = {'content-type': 'application/json'}
         response = requests.post(url, headers=headers)

@@ -29,117 +29,108 @@
             <!--요일날짜-->
             <table  style="width:60%; margin:auto; text-align: center">
                 {% for date in datas.date %}
-                    <td> <p class="day">{{ date.text }}<br>{{ date.day }}</p> </td>  
+                    <td> <p class="day">{{ date.text }}<br>{{ date.day }}</p> </td>
+                    <input type="button" class="movieList_button" value="{{date.month_day}}" />
                 {% endfor %}
             </table>
 
-            <table class="data">
-                <!--첫번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/megabox.jpg' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">07:50[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 7관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">110/173</td>
-                </tr>
-                <!--두번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/lotte.png' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">08:10[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 6관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">85/128</td>
-                </tr>
-                <!--세번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/lotte.png' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">08:45[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 2관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">154/236</td>
-                </tr>
-                <!--네번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/megabox.jpg' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">08:50[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 6관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">109/160</td>
-                </tr>
-                <!--다섯번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/lotte.png' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">09:20[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전둔산(월평동) 4관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">140/210</td>
-                </tr>
-                <!--여섯번째 상영시간-->
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'img/megabox.jpg' %}" width="80px" height="80px" style="margin: 20px 30px">
-                    </td>
-                    <td rowspan="2" width="410px" style="font-size: 50px;">09:40[조조]</td>
-                    <td style="font-size: 30px; text-align: right;">대전현대아울렛 MX관</td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px; text-align: right;">144/261</td>
-                </tr>
-            </table>
+        <hr>
+            <div id="movieList">
+
+        <hr>
+            <div id="movie"></div>
+
         </div>
         
     </body>
-    <!-- <h3>영화제목 : {{ datas.movie_name }}</h3>
-    <h3>영화관검색 위치 : {{ datas.movie_place }}</h3>
-    <h4>현재시간 : {{ datas.now }}</h4>
 
-    {% for data in datas.theater_info%}
-        영화관 이름 : {{ data.TheaterName }}
-        <br/>
-        영화관 코드 : {{ data.TheaterID }}
-        <br/>
-        영화관 위치(lng) : {{ data.Longitude }}
-        <br/>
-        영화관 위치(lat) : {{ data.Latitude }}
-        <br/>
-        영화 상영시간 :
-        <br>
+    <!--ajax 통신 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+{#        {% for date in datas.date %}#}
+                $.ajax({
+                {# 반복하면서 json을 가져옴   #}
+                url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021{{ datas.date.0.month_day }}",
+                name: "{{date.month_day}}",
+                tags: "{{date.month_day}}",
+                dataType: "json",
 
-        {% for MoiveList in data.MoiveLists %}
-{#            {{ MoiveList }}#}
-{#            {{ MoiveList.StartTime }}#}
-            {% if MoiveList.StartTime == "None"%}
-                    - 시작시간 : {{ MoiveList.StartTime }}
-                    <br/>
-                    - 잔여좌석 : {{ MoiveList.RemainingSeat }}
-                    <br/>
-            {% else %}
-                {% for movie in MoiveList %}
-                    - 시작시간 : {{ movie.StartTime }}
-                    <br/>
-                    - 잔여좌석 : {{ movie.RemainingSeat }}
-                    <br/>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-        <hr>
-    {% endfor %}
-    <br/> -->
+                success: function (data) {
+                    var movieListsAPI = "";
+                    movieListsAPI +="<table class= 'data'>"
+                    for (var i = 0; i < data.theater_info.length; i++) {
+                        var movieLists = data.theater_info[i].MoiveLists
+
+                        for (var j =0 ; j <movieLists.length; j ++){
+                            movieListsAPI += "<tr>"
+                            movieListsAPI += "<td rowspan='2'>"
+                            if (data.theater_info[i].TheaterName.includes('CGV')){
+                                movieListsAPI += "<img src='{% static 'img/cgv.jpg' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                            }
+                            else {
+                                movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                            }
+                            movieListsAPI += "</td>"
+                            movieListsAPI += "<td rowspan='2' width='410px' style='font-size: 50px;'>" + movieLists[j][0].StartTime + "</td>"
+                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>"
+                            movieListsAPI += "</tr>"
+                            movieListsAPI += "<tr>"
+                            movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][0].RemainingSeat + "</td>"
+                            movieListsAPI += "</tr>"
+                        }
+                    }
+                    movieListsAPI += "</table>"
+                    $('[id="movie"]').html(movieListsAPI);
+                },
+                error: function (request, status, error) {
+                    console.log('실패');
+                }
+            });
+{#        {% endfor %}#}
+
+
+        $(function(){
+            $(".movieList_button").click(function(){
+                var search_date = $('.movieList_button').val();
+                console.log(search_date)
+                console.log("---")
+                $.ajax({
+                    url: "{% url 'find_moive_theater' %}?lat='{{ datas.lat }}'&lng='{{ datas.lng }}'&movie_name='{{ datas.movie_name }}'&date=2021"+search_date,
+                    name: "{{date.month_day}}",
+                    tags: "{{date.month_day}}",
+                    dataType: "json",
+                    success: function(data) {
+                        var movieListsAPI = "";
+                        movieListsAPI +="<table class= 'data'>"
+                        for (var i = 0; i < data.theater_info.length; i++) {
+                            var movieLists = data.theater_info[i].MoiveLists
+
+                            for (var j =0 ; j <movieLists.length; j ++){
+                                movieListsAPI += "<tr>"
+                                movieListsAPI += "<td rowspan='2'>"
+                                if (data.theater_info[i].TheaterName.includes('CGV')){
+                                    movieListsAPI += "<img src='{% static 'img/cgv.jpg' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                }
+                                else {
+                                    movieListsAPI += "<img src='{% static 'img/lotte.png' %}' width='80px' height='80px' style='margin: 20px 30px'>"
+                                }
+                                movieListsAPI += "</td>"
+                                movieListsAPI += "<td rowspan='2' width='410px' style='font-size: 50px;'>" + movieLists[j][0].StartTime + "</td>"
+                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>" + data.theater_info[i].TheaterName + "</td>"
+                                movieListsAPI += "</tr>"
+                                movieListsAPI += "<tr>"
+                                movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][0].RemainingSeat + "</td>"
+                                movieListsAPI += "</tr>"
+                            }
+                        }
+                        movieListsAPI += "</table>"
+                        $('[id="movieList"]').html(movieListsAPI);
+                    }
+                });
+            })
+        })
+
+    </script>
 {% endblock content %}
 
 

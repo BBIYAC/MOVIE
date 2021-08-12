@@ -159,7 +159,7 @@ def movie_list(request):
        "img_url": img_url
     }
 
-    print(datas)
+    # print(datas)
 
     return render(request, 'movie/timetable.html', {'datas': datas})
 
@@ -188,11 +188,157 @@ def timetable(request):
 
     location = Location(LOCATION_API_KEY)
 
-    date = request.POST.get('date')
-
     findLoc = location.get_place_location(address)['location']
     lat = findLoc['lat']
     lng = findLoc['lng']
+
+
+    # theater_list = []
+    #
+    # # LOTTE
+    # Lcinema = LotteCinema()
+    # lotte_theater_lists = Lcinema.filter_nearest_theater(Lcinema.get_theater_list(), lat, lng)
+    #
+    # for lotte_theater in lotte_theater_lists:
+    #     lotte_movie_schedules = []
+    #     theaterID = lotte_theater.get('TheaterID')
+    #     theaterName = lotte_theater.get('TheaterName')
+    #     theaterLng = lotte_theater.get('Longitude')
+    #     theaterLat = lotte_theater.get('Latitude')
+    #     movie_lists = Lcinema.get_movie_list(theaterID, date)
+    #     # print(f"theaterID: {theaterID}, theaterName: {theaterName}, theaterLng: {theaterLng}, movie_lists: {movie_lists}")
+    #
+    #     for key, value in movie_lists.items():
+    #         # print(key, value)
+    #         if value.get('Name') == movie_name:
+    #             # print(key, value)
+    #             schedules = value.get('Schedules')
+    #             # print(schedules)
+    #             lotte_movie_schedules.append(schedules)
+    #
+    #     if not lotte_movie_schedules:
+    #         lotte_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+    #
+    #     # print(lotte_movie_schedules)
+    #     # print(type(lotte_movie_schedules))
+    #
+    #
+    #
+    #
+    #     theater_list.append({
+    #         'TheaterID': theaterID,
+    #         'TheaterName': theaterName,
+    #         'Longitude': theaterLng,
+    #         'Latitude': theaterLat,
+    #         'MoiveLists': lotte_movie_schedules
+    #     })
+    #     # print("---")
+    # # print(lotte_theater_info)
+    #
+    # # CGV
+    # Ccinema = CGV()
+    # cgv_theater_lists = Ccinema.filter_nearest_theater(Ccinema.get_theater_list(), lat, lng)
+    #
+    # for cgv_theater in cgv_theater_lists:
+    #     # print(cgv_theater)
+    #     cgv_movie_schedules = []
+    #     theaterID = cgv_theater.get('TheaterCode')
+    #     theaterName = cgv_theater.get('TheaterName')
+    #     theaterLng = cgv_theater.get('Longitude')
+    #     theaterLat = cgv_theater.get('Latitude')
+    #     areacode = cgv_theater.get('RegionCode')
+    #     movie_lists = Ccinema.get_movie_list(areacode, theaterID, date)
+    #     # print(f"theaterID: {theaterID}, theaterName: {theaterName}, theaterLng: {theaterLng}, movie_lists: {movie_lists}")
+    #
+    #     for key, value in movie_lists.items():
+    #         # print(key, value)
+    #         if value.get('Name') == movie_name:
+    #             # print(key, value)
+    #             schedules = value.get('Schedules')
+    #             # print('---')
+    #             schedules = schedules[0]
+    #             # print(schedules)
+    #             # print(type(schedules))
+    #             for schedule in schedules:
+    #                 handle_scedule_data = []
+    #                 # print(f"schedule: {schedule}")
+    #                 startTime = schedule[0]
+    #                 remainingSeat = schedule[1][4:-1]
+    #                 handle_scedule_data.append({
+    #                     'StartTime': startTime,
+    #                     'RemainingSeat': remainingSeat
+    #                 })
+    #                 # print(handle_scedule_data)
+    #                 cgv_movie_schedules.append(handle_scedule_data)
+    #
+    #
+    #     if not cgv_movie_schedules:
+    #         cgv_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
+    #
+    #     # print(f"cgv_movie_schedules: {cgv_movie_schedules}")
+    #     # print(f"cgv_movie_schedules: {type(cgv_movie_schedules)}")
+    #
+    #     theater_list.append({
+    #         'TheaterID': theaterID,
+    #         'TheaterName': theaterName,
+    #         'Longitude': theaterLng,
+    #         'Latitude': theaterLat,
+    #         'MoiveLists': cgv_movie_schedules
+    #     })
+    #     # print("---")
+    #
+    # # print(lotte_theater_info)
+    # # print("---")
+    # # print(cgv_theater_info)
+    #
+    #
+    # theater_info = []
+    # theater_lists = filter_nearest_theater(theater_list, lat, lng, 3)
+    #
+    # for theater in theater_lists:
+    #     theater_info.append(theater)
+
+    # movie_name = request.GET['movie_name']
+    # img_url = request.GET['img_url']
+
+    days = ['일', '월', '화', '수', '목', '금', '토']
+    weekday = []
+
+    for i in range(0, 7):
+        date = {}
+        now = datetime.now() + timedelta(days=i)
+        d = now.strftime("%w")
+        month_day = now.strftime("%m%d")
+        day = now.strftime("%d")
+        date['text'] = days[int(d)]
+        date['month_day'] = month_day
+        date['day'] = day
+        weekday.append(date)
+
+    datas = {
+        'date': weekday,
+        'movie_name': movie_name,
+        'movie_place': address,
+        'img_url': img_url,
+        'lat': lat,
+        'lng': lng
+    }
+
+    return render(request, 'movie/timetable.html', {'datas': datas})
+
+
+@csrf_exempt
+def find_moive_theater(request):
+
+    #location
+    lat = request.GET['lat']
+    lng = request.GET['lng']
+
+    #date
+    date = request.GET['date']
+
+    #movie
+    movie_name = request.GET['movie_name']
 
 
     theater_list = []
@@ -223,9 +369,6 @@ def timetable(request):
 
         # print(lotte_movie_schedules)
         # print(type(lotte_movie_schedules))
-
-
-
 
         theater_list.append({
             'TheaterID': theaterID,
@@ -273,7 +416,6 @@ def timetable(request):
                     # print(handle_scedule_data)
                     cgv_movie_schedules.append(handle_scedule_data)
 
-
         if not cgv_movie_schedules:
             cgv_movie_schedules.append({'StartTime': 'None', 'RemainingSeat': 'None'})
 
@@ -293,34 +435,12 @@ def timetable(request):
     # print("---")
     # print(cgv_theater_info)
 
-    
     theater_info = []
     theater_lists = filter_nearest_theater(theater_list, lat, lng, 3)
 
     for theater in theater_lists:
         theater_info.append(theater)
 
-    # movie_name = request.GET['movie_name']
-    # img_url = request.GET['img_url']
-
-    days = ['일', '월', '화', '수', '목', '금', '토']
-    weekday = []
-
-    for i in range(0, 7):
-        date = {}
-        now = datetime.now() + timedelta(days=i)
-        d = now.strftime("%w")
-        date['text'] = days[int(d)]
-        date['day'] = now.day
-        weekday.append(date)
-
-
     datas = {
-        'date': weekday,
-        'movie_name': movie_name,
-        'movie_place': address,
         'theater_info': theater_info,
-        'img_url': img_url
     }
-
-    return render(request, 'movie/timetable.html', {'datas': datas})
