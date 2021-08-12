@@ -5,10 +5,12 @@
 
     <head>
         <style>
-            .back {float:left; width: 90px; height: 90px;}
+            body{
+                margin: 0;
+                height: 100%;
+            }
             .wrap {text-align: center; padding: 10px 65px; font-size: 55px; font-family:나눔스퀘어_ac;}
-            .line1 {width: 800px; height: 4px; text-align: center; background-color: rgb(255, 255, 255);}
-            .day {font-size: 37px; text-align: center; margin: 10px 30px 30px;}
+            .day {font-size: 37px; text-align: center; margin: 10px 30px 10px;}
             .day.selected{
                 font-size: 50px;
                 font-weight: bold;
@@ -31,34 +33,91 @@
             #movieList{
                 -ms-overflow-style: none;
                 width: 100%; 
-                height: 700px; 
+                height: 800px; 
                 overflow: auto; 
             }
             #movieList::-webkit-scrollbar{
                 display:none; 
             }
+            .selected_poster{
+                border-radius: 40px;
+                width: auto;
+                height: 700px;
+            }
+            header {
+                height: 180px; 
+                width: 100%;
+                background-color: rgb(107, 40, 107);
+                color: #fff;
+                margin-bottom: 50px;
+                display: flex;
+                position: relative;
+            }
+            .back {
+                font-size: 50px;
+                color: #fff;
+                margin: 60px auto auto 40px;
+                position: absolute;
+            }
+            header p{
+                font-size: 50px;
+                text-align: center;
+                line-height: 180px;
+                margin: 0 auto;
+            }
+            .weekdays{
+                border-top: 1px solid gray;
+                border-bottom: 1px solid gray;
+                padding: 15px;
+                margin: 40px auto;
+            }
+            .modal { 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                display: none; 
+                background-color: rgba(0, 0, 0, 0.4); 
+            }
+            .modal.show { 
+                display: block; 
+            } 
+            .modal_body { 
+                position: absolute; 
+                top: 50%; 
+                left: 50%; 
+                padding: 40px; 
+                width: 550px;
+                text-align: center; 
+                background-color: rgb(107, 40, 107); 
+                color: #fff;
+                border-radius: 20px; 
+                box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15); 
+                transform: translateX(-50%) translateY(-50%); 
+            }
+
         </style>
     </head>
 
     <body>
-        <a href="{% url 'rank' %}">
-            <img class="back" src="{% static 'img/leftarrow.png' %}">
-        </a>
-        <br><br>
+        <header>
+            <a href="{% url 'rank' %}">
+                <i class="fas fa-chevron-left back"></i>
+            </a>
+            <p>{{ datas.movie_name }}</p>
+        </header>
 
         <div class="wrap">
-            <p>{{ datas.movie_name }}</p>
             {% autoescape on %}
-            <img src="{{ datas.img_url }}" width="600px" height="750px">
+            <img class="selected_poster" src="{{ datas.img_url }}">
             {% endautoescape %}
-            <hr class="line1">
 
             <!--요일날짜-->
-            <table  style="width:60%; margin:auto; text-align: center">
+            <table class="weekdays"  style="width:60%;; text-align: center">
                 {% for date in datas.date %}
                     <td>    
-                        
-                        {% if date.day == '12' %}
+                        {% if forloop.counter == 1 %}
                         <p class="day selected">{{ date.text }}<br> 
                         {% else %}
                         <p class="day">{{ date.text }}<br> 
@@ -71,9 +130,13 @@
                 {% endfor %}
             </table>
 
-        <hr>
             <div id="movieList">
+        </div>
 
+        <div class="modal"> 
+            <div class="modal_body">
+                예약하러 Go!!
+            </div> 
         </div>
         
     </body>
@@ -96,6 +159,7 @@
                     var movieLists = data.theater_info[i].MoiveLists;
                     for (var j =0 ; j <movieLists.length; j ++){
                         for (var k=0; k< movieLists[j].length; k++){
+                            movieListsAPI += "<tbody class='selected_timetable' onclick='ticketing()'>";
                             movieListsAPI += "<tr>";
                             movieListsAPI += "<td rowspan='2'>";
                             if (data.theater_info[i].TheaterName.includes('CGV')){
@@ -111,14 +175,17 @@
                             movieListsAPI += "<tr>";
                             movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>";
                             movieListsAPI += "</tr>";
+                            movieListsAPI += "</tbody>";
                         }
                     }
                 }
                 movieListsAPI += "</table>";
-                $('[id="movieList"]').html(movieListsAPI);
                 if( $('.data').is(':empty') ) {
                     movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
                     $('[id="movieList"]').html(movieListEmpty);
+                }
+                else{
+                    $('[id="movieList"]').html(movieListsAPI);
                 }
             },
             error: function (request, status, error) {
@@ -126,10 +193,6 @@
             }
         });
 
-        
-        var movieListFunc = function (){
-            
-        }
         
         $(".day").click(function(){
             search_date = $(this).find('.movieList_button').val();
@@ -150,6 +213,7 @@
                         var movieLists = data.theater_info[i].MoiveLists;
                         for (var j =0 ; j <movieLists.length; j ++){
                             for (var k=0; k< movieLists[j].length; k++){
+                                movieListsAPI += "<tbody class='selected_timetable' onclick='ticketing()'>";
                                 movieListsAPI += "<tr>";
                                 movieListsAPI += "<td rowspan='2'>";
                                 if (data.theater_info[i].TheaterName.includes('CGV')){
@@ -165,18 +229,43 @@
                                 movieListsAPI += "<tr>";
                                 movieListsAPI += "<td style='font-size: 30px; text-align: right;'>"+ movieLists[j][k].RemainingSeat+ " / " + movieLists[j][k].TotalSeatCount + "</td>";
                                 movieListsAPI += "</tr>";
+                                movieListsAPI += "</tbody>";
                             }
                         }
                     }
                     movieListsAPI += "</table>";
-                    $('[id="movieList"]').html(movieListsAPI);
                     if( $('.data').is(':empty') ) {
-                    movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
-                    $('[id="movieList"]').html(movieListEmpty);
-                }
+                        movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
+                        $('[id="movieList"]').html(movieListEmpty);
+                    }
+                    else{
+                        $('[id="movieList"]').html(movieListsAPI);
+                        
+                    }
                 }
             });
         });
+
+        const body = document.querySelector('body');
+        const modal = document.querySelector('.modal');
+
+        function ticketing() {
+            modal.classList.toggle('show');
+            if (modal.classList.contains('show')) {
+                body.style.overflow = 'hidden';
+            }
+        };
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.toggle('show');
+
+                if (!modal.classList.contains('show')) {
+                    body.style.overflow = 'auto';
+                }   
+            }
+        });
+
 
     </script>
 {% endblock content %}

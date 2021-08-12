@@ -18,16 +18,22 @@
                 text-decoration: none;
             }
             .location{
-                display: flex;
                 color: white;
-                line-height: 180px;
                 font-size: 36px;
                 cursor: pointer;
-                margin: 0 20px;
+                display: flex;
+                margin: 0 auto;
+            }
+            .location > p{
+                text-align: center;
+                width: 70%;
+                line-height: 180px;
+                height: 180px;
+                margin: 0 20px 0 auto;
             }
             .location-icon{
-                margin-left: 40px;
-                padding: 65px 0;
+                padding: 70px 0;
+                margin-right: auto;
             }
             .wrap {
                 margin: 100px 60px;
@@ -39,7 +45,7 @@
                 margin-bottom: 50px;
             }
             .moviePoster {
-                margin: 25px 20px;
+                margin: 25px 30px;
                 border-radius: 20px;
             }
             .top{
@@ -88,7 +94,7 @@
     <body>
         <div class="header">
             <a class="location" href="{% url 'location' %}">
-                <span>{{ datas.address }}</span>
+                <p>{{ datas.address }}</p>
                 <i class="fas fa-chevron-down location-icon"></i>
             </a>
         </div>
@@ -126,9 +132,9 @@
        </div>
        <div id="loading"></div>
 
-       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
        <script type="text/javascript">
-            $(window).load(function () {
+            $(window).ready(function () {
                 $("#loading").delay("1000").fadeOut();
             });
        </script>

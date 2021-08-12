@@ -79,10 +79,11 @@ def rank(request):
 
         base_url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='
         movie_name = movie_list['name'] 
-        search_url = base_url + quote(movie_name)
+        search_url = base_url + quote(movie_name + '영화')
         html = urlopen(search_url)
         soup = BeautifulSoup(html,'html.parser')
-        img_url = soup.select_one('#main_pack > div.sc_new.cs_common_module.case_empasis._au_movie_content_wrap > div.cm_content_wrap > div.cm_content_area._cm_content_area_info > div.cm_info_box > div.detail_info > a > img')['src']
+        img_url = soup.select_one(
+            '#main_pack > div.sc_new._au_movie_content_wrap > div.cm_content_wrap > div > div.cm_info_box > div.detail_info img')['src']
         movie[rank]['img'] = img_url
 
     location = Location(LOCATION_API_KEY)
@@ -166,18 +167,16 @@ def movie_list(request):
 
 def get_movie_poster(movie_name):
     base_url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='
-    search_url = base_url + quote(movie_name)
+    search_url = base_url + quote(movie_name + '영화')
     html = urlopen(search_url)
     soup = BeautifulSoup(html, 'html.parser')
     img_url = soup.select_one(
-        '#main_pack > div.sc_new.cs_common_module.case_empasis._au_movie_content_wrap > div.cm_content_wrap > div.cm_content_area._cm_content_area_info > div.cm_info_box > div.detail_info > a > img')[
-        'src']
+        '#main_pack > div.sc_new._au_movie_content_wrap > div.cm_content_wrap > div > div.cm_info_box > div.detail_info img')['src']
     return img_url
 
 
 @csrf_exempt
 def timetable(request):
-
     movie_name = request.GET['movie_name']
     address = request.GET['address']
     img_url = get_movie_poster(movie_name)
