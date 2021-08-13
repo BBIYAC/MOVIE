@@ -7,27 +7,63 @@
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <style type="text/css">
+        .body{
+            height: 100%;
+            display: none;
+        }
+        .mobile{
+            margin-top: 200px;
+            display: block;
+            justify-content: center;
+        }
+        .mobile-img{
+            margin-left: 42%;
+            margin-bottom: 40px;
+            width: 225px;
+            height: auto;
+        }
+        .mobile-text{
+            margin: auto;
+            text-align: center;
+            background-color: rgb(107, 40, 107);
+            border-radius: 20px;
+            color: #fff;
+            padding: 20px 40px;
+            width: 700px;
+        }
         #loading {
-                display: inline-block;
-                width: 150px;
-                height: 150px;
-                border: 3px solid rgba(255,255,255,.3);
-                border-radius: 50%;
-                border-top-color: rgb(107, 40, 107);
-                animation: spin 1s ease-in-out infinite;
-                -webkit-animation: spin 1s ease-in-out infinite;
-            }
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: rgb(107, 40, 107);
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
 
-            @keyframes spin {
-            to { -webkit-transform: rotate(360deg); }
+        @keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
+        }
+        @-webkit-keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
+        }
+
+        @media screen and (max-width: 1000px){
+            .body{
+                display: block;
             }
-            @-webkit-keyframes spin {
-            to { -webkit-transform: rotate(360deg); }
+            .mobile{
+                display: none;
             }
+        }
     </style>
 </head>
 <body>
-
+<div class="mobile">
+    <img class="mobile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkbbpGjXZX1qOYl-VBThbykw5DffhT2NR0gOQT3q4j8X_A7mBcBK6EuRSQ2vy-3uozUlo&usqp=CAU" alt="">
+    <h1 class="mobile-text">모바일 크기 또는 모바일로 이용해주세요!</h1>
+</div>
 {% block content %}
 
 {% endblock content %}
@@ -38,6 +74,7 @@
         $(".body").hide();
         $("#loading").fadeIn("slow");
     }
+    
 </script>
 </body>
 </html>
