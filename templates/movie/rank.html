@@ -27,10 +27,13 @@
             }
             .location > p{
                 text-align: center;
-                max-width: 70%;
+                max-width: 600px;
                 line-height: 180px;
                 height: 180px;
                 margin: 0 20px 0 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             .location-icon{
                 padding: 70px 0;
@@ -75,8 +78,7 @@
             
         </style>
     </head>
-
-    <body>
+    <div class="body">
         <div class="header">
             <a class="location" href="{% url 'location' %}">
                 <p>{{ datas.address }}</p>
@@ -118,7 +120,7 @@
 
        
 
-    </body>
+    </div>
 
 {% endblock content %}
 

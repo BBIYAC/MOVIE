@@ -5,6 +5,9 @@
 
     <head>
         <style>
+            body{
+                height: 100%;
+            }
             .back {
                 font-size: 50px;
                 margin: 60px auto auto 40px;
@@ -43,14 +46,25 @@
                 font-weight: bold;
                 
             }
+            #loading{
+                display: none;
+                margin: auto;
+                width: 300px;
+                height: 300px;
+                margin-top: 70%;
+            }
         </style>
     </head>
 
-    <body>
+    <div id="loading" ></div>
+    <div class="body">
         <br>
-        <i class="fas fa-chevron-left back"></i>
+        <a href="{% url 'rank' %}" onclick="loading()">
+            <i class="fas fa-chevron-left back" ></i>
+        </a>
+        
         <div class="wrap">
-            <form action="{% url 'rank' %}" method="post">
+            <form action="{% url 'rank' %}" method="post" >
                 <p style="font-size: 68px; margin-bottom: 0px;">어디에서 영화를 관람하나요?</p>
                 <p style="font-size: 47px; margin: 29px 0px 90px">지역, 도로명, 건물을 입력하세요</p>
                 <table>
@@ -59,10 +73,15 @@
                         </td>
                         <td>
                             <img class="search" src="{% static 'img/search.png' %}">
-                            <input class="real-search" type="submit">
+                            <input class="real-search" type="submit" onclick="loading()">
                         </td>
                 </table>
-                <div class="currentpo">
+                
+            </form>
+            <form action="{% url 'rank' %}" method="post">
+                <input type="text" name='here' hidden>
+                <input type="submit" class="herelocation" hidden >
+                <div class="currentpo" onclick="loading(); hereLocation()">
                     <img src="{% static 'img/gps.png' %}" width="40px" height="40px" style="margin-right: 20px;">
                     현 위치로 주소 설정
                 </div>
@@ -71,14 +90,22 @@
 
             </div>
         </div>
-        <script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
             const search = document.querySelector('.search');
             const realSearch = document.querySelector('.real-search');
 
             search.addEventListener("click", function(){
                 realSearch.click();
             });
+
+
+            function hereLocation(){
+                $('.herelocation').click();
+            }
         </script>
-    </body>
+    </div>
 
 {% endblock content %}
