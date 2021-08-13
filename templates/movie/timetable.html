@@ -97,9 +97,33 @@
                 transform: translateX(-50%) translateY(-50%); 
             }
             #loading{
+                display: none;
+                margin: auto;
+                width: 300px;
+                height: 300px;
+                margin-top: 70%;
+            }
+            .loading {
+                display: inline-block;
                 margin-top: 40%;
+                width: 150px;
+                height: 150px;
+                border: 3px solid rgba(255,255,255,.3);
+                border-radius: 50%;
+                border-top-color: rgb(107, 40, 107);
+                animation: spin 1s ease-in-out infinite;
+                -webkit-animation: spin 1s ease-in-out infinite;
             }
 
+            @keyframes spin {
+            to { -webkit-transform: rotate(360deg); }
+            }
+            @-webkit-keyframes spin {
+            to { -webkit-transform: rotate(360deg); }
+            }
+            .hide{
+                display: none;
+            }
         </style>
     </head>
     <div id="loading" ></div>
@@ -132,8 +156,8 @@
                     </td>
                 {% endfor %}
             </table>
-            <div id="loading"></div>
-            <div id="movieList">
+            <div class="loading"></div>
+            <div id="movieList" ></div>
         </div>
 
         <div class="modal"> 
@@ -156,7 +180,7 @@
 
             success: function(data) {
                 var movieListsAPI = "";
-                movieListsAPI +="<table class= 'data'>"
+                movieListsAPI +="<table class= 'data' >"
                 for (var i = 0; i < data.theater_info.length; i++) {
                     // var movieLists = data.theater_info[i].MoiveLists
                     var movieLists = data.theater_info[i].MoiveLists;
@@ -183,6 +207,8 @@
                     }
                 }
                 movieListsAPI += "</table>";
+                document.querySelector('.loading').classList.add('hide');
+
                 if( $('.data').is(':empty') ) {
                     movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
                     $('[id="movieList"]').html(movieListEmpty);
@@ -198,6 +224,8 @@
 
         
         $(".day").click(function(){
+            $('[id="movieList"]').html('');
+            document.querySelector('.loading').classList.remove('hide');
             search_date = $(this).find('.movieList_button').val();
             if( !$(this).hasClass('selected')){
                 $(".day").removeClass('selected');
@@ -237,6 +265,8 @@
                         }
                     }
                     movieListsAPI += "</table>";
+                    document.querySelector('.loading').classList.add('hide');
+
                     if( $('.data').is(':empty') ) {
                         movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
                         $('[id="movieList"]').html(movieListEmpty);
@@ -269,9 +299,13 @@
             }
         });
 
-        window.onload = function(){
-            $("#loading").fadeOut();
-        }   
+        // window.onload = function(){
+        //     $('.loading').delay(1000).hide();
+        // };   
+
+        function hideLoding(){
+            $('.loading').hide();
+        }
 
 
     </script>
