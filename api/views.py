@@ -572,6 +572,7 @@ def find_moive_theater(request):
     for theater in theater_lists:
         theater_info.append(theater)
 
+
     datas = {
         'date': date,
         'theater_info': theater_info,
