@@ -208,13 +208,11 @@
                 }
                 movieListsAPI += "</table>";
                 document.querySelector('.loading').classList.add('hide');
+                $('[id="movieList"]').html(movieListsAPI);
 
-                if( $('.data').is(':empty') ) {
+                if($('.data').is(':empty')) {
                     movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
                     $('[id="movieList"]').html(movieListEmpty);
-                }
-                else{
-                    $('[id="movieList"]').html(movieListsAPI);
                 }
             },
             error: function (request, status, error) {
@@ -238,7 +236,7 @@
                 dataType: "json",
                 success: function(data) {
                     var movieListsAPI = "";
-                    movieListsAPI +="<table class= 'data'>"
+                    movieListsAPI +="<table class='data'>"
                     for (var i = 0; i < data.theater_info.length; i++) {
                         // var movieLists = data.theater_info[i].MoiveLists
                         var movieLists = data.theater_info[i].MoiveLists;
@@ -266,14 +264,11 @@
                     }
                     movieListsAPI += "</table>";
                     document.querySelector('.loading').classList.add('hide');
+                    $('[id="movieList"]').html(movieListsAPI);
 
-                    if( $('.data').is(':empty') ) {
+                    if($('.data').is(':empty')) {
                         movieListEmpty = "<div class='movieList_empty'> 상영 중인 영화관이 없습니다.</div>";
                         $('[id="movieList"]').html(movieListEmpty);
-                    }
-                    else{
-                        $('[id="movieList"]').html(movieListsAPI);
-                        
                     }
                 }
             });
